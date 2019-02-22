@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div>一起去过的地方</div>
+    <div>小小企企鹅儿的小小世界</div>
   </div>
 </template>
 
@@ -16,7 +16,5 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
