@@ -252,7 +252,7 @@ export default {
   top: 0;
   z-index: 888;
   display: none;
-  background: url("../assets/hoverBox.png")
+  background: url("../../assets/hoverBox.png")
     repeat 0 0;
   cursor: move;
 }
