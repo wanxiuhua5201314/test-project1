@@ -24,7 +24,7 @@ export default {
   props: {
     imgSrc: {
       type: String,
-      default: ''
+      default: '../../assets/testMagnify.jpg'
     },
     scale: {
       type: String,
