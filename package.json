@@ -78,7 +78,8 @@
     "element-ui": "2.5.4",
     "node-sass": "^4.5.1",
     "sass-loader": "^6.0.3",
-    "scss-loader": "^0.0.1"
+    "scss-loader": "^0.0.1",
+    "moment": "^2.22.2"
   },
   "engines": {
     "node": ">= 6.0.0",
