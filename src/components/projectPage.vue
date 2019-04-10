@@ -1,116 +1,126 @@
 <template>
     <div class="project-page">
-        <section class="container">
-        <!-- 第一幅画面 -->
-        <section class="page-a bg-adaptive">
-            <!-- 男孩 -->
-            <div class="chs-boy chs-boy-deer"></div>
-            <!-- 月亮 -->
-            <div class="moon"></div>
-            <!-- 云 -->
-            <div class="cloudy"></div>
-            <!-- 圣诞树 -->
-            <figure class="tree"></figure>
-            <!-- 星星 -->
-            <svg viewBox="0 0 512 486">
-                <defs>
-                    <linearGradient id="star" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#FCF0BC"></stop>
-                        <stop offset="0%" stop-color="#FCF0BC"></stop>
-                    </linearGradient>
-                </defs>
-                <polygon style="fill: url(#star);" points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-            </svg>
-            <!-- 窗户 -->
-            <div class="window wood">
-                <div class="window-bg"></div>
-                <div class="window-content">
-                    <div class="window-left"></div>
-                    <div class="window-right"></div>
-                </div>
-            </div>
+        <section class='page-a'>
+         <div class="chs-boy chs-boy-deer"></div>
+        <div class="moon"></div>
+        <div class="cloudy"></div>
+        <div class="tree"></div>
         </section>
-        <!-- 第二幅画面 -->
-        <section class="page-b bg-adaptive">
-            <!-- 猫 -->
-            <figure class="cat"></figure>
-            <!-- 小女孩 -->
-            <figure class="girl"></figure>
-            <!-- 圣诞男孩 -->
-            <figure class="christmas-boy-head"></figure>
-            <figure class="christmas-boy boy-walk"> </figure>
-            <!-- 旋转木马 -->
-            <div id="carousel">
-                <figure id="spinner"></figure>
-            </div>
-        </section>
-        <!-- 第三幅画面 -->
-        <section class="page-c bg-adaptive">
-            <!-- 月亮 -->
-            <div class="moon"></div>
-            <!-- 云 -->
-            <div class="cloudy"></div>
-
-            <!-- 星星 -->
-            <svg viewBox="0 0 512 486">
-                <defs>
-                    <linearGradient id="star" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#FCF0BC"></stop>
-                        <stop offset="0%" stop-color="#FCF0BC"></stop>
-                    </linearGradient>
-                </defs>
-                <polygon style="fill: url(#star);" points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-            </svg>
-
-            <!-- 圣诞树 -->
-            <figure class="tree treefix"></figure>
-            <!-- 鹿 -->
-            <figure class="deer"></figure>
-            <!-- 窗户关闭 -->
-            <div class="window wood">
-                <!-- <div class="window-bg"></div> -->
-                <div class="window-content" data-attr="red">
-                    <div class="window-scene-bg"></div>
-                    <div class="window-close-bg"></div>
-                    <div class="window-left hover"></div>
-                    <div class="window-right hover"></div>
-                </div>
-            </div>
-            <!-- 雪花 -->
-            <canvas id="snowflake" style="position:absolute;z-index:999;"></canvas>
-        </section>
-    </section>
     </div>
 </template>
-<script>
-const docEl = document.documentElement
+
+<script >
 export default {
   data () {
-    return {
-    }
+    return {}
   },
   mounted () {
-    this.getInformation()
   },
   methods: {
-    getInformation () {
-      let clientWidth = docEl.clientWidth
-      docEl.style.fontsize = 20 * (clientWidth / 320) + 'PX'
-    }
   }
 }
 </script>
 <style lang="scss">
- .project-page{
-     margin:0px;
-     height:100%;
-     background:url("../assets/images/a/page-a-bg.png");
- }
- .tree-animation{
-    animation:bird-slow 400ms steps(3) infinite;
-    @keyframes bird-slow {
-    0% {background-position-x: -0px}
-    100% {background-position-x: -273px}
+.project-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+   .page-a {
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/a/page-a-bg.png');
+  //background-image: url(http://img.mukewang.com/565d07770001790814410901.png);
+  position: absolute;
+  z-index: 5;
+  .chs-boy {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: 1rem;
+  transform: scale(2);
+  background: url(../assets/images/a/boy-sleigh-car.png) -300% -100%;
+  background-size: 400% 100%
 }
- }
+
+.chs-boy-deer {
+  animation: chsBoyDeer 1s steps(3, end) infinite;
+}
+@keyframes chsBoyDeer {
+  0% {
+    background-position: 0 100%
+  }
+
+  100% {
+    background-position: -300% 100%
+  }
+}
+  .boy-sleigh-car{
+      width:100px;
+      height:100px;
+  }
+  .moon{
+    position: absolute;
+    left: 260px;
+    top: 50px;
+    width: 100px;
+    height: 100px;
+    background-color:yellow;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px;
+    animation: nucleus 2s infinite linear;
+  }
+@keyframes nucleus {
+  0%,
+  100% {
+    box-shadow: 0 0 0 transparent
+  }
+  50% {
+    box-shadow: 0 0 1rem #FCF0BC
+  }
+}
+.cloudy {
+ left:100px;
+ top:100px;
+ position: absolute;
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ background-color: #60768D;
+ box-shadow: #60768D 65px -15px 0 -5px,#60768D 25px -25px, #60768D 30px 10px,#60768D 60px 15px 0 -10px,#60768D 85px 5px 0 -5px;
+animation: cloudy 5s linear infinite;
+}
+
+@keyframes cloudy {
+  0% {
+   top:100px
+  }
+  100%{
+  top:90px
+  }
+}
+.tree {
+  height: 20rem;
+  width:20rem;
+  bottom: 80px;
+  left: 2rem;
+  position:absolute;
+  background-image: url(../assets/images/a/trees.png);
+  background-size: 200% 100%;
+  animation: treeAnim 1s steps(2) infinite;
+}
+
+@keyframes treeAnim {
+  0% {
+    background-position: 200% 100%
+  }
+  100% {
+    background-position: 400% 100%
+  }
+}
+}
+
+}
 </style>
