@@ -14,6 +14,26 @@
       <div class="test-animation">测试animation样式:哈哈哈</div>
     </div>
     <div class="test-transform">测试transition和transform</div>
+    <div  style="height:100px;width:30%">
+      <el-upload
+  class="upload-demo"
+  action="https://jsonplaceholder.typicode.com/posts/"
+  :on-preview="handlePreview"
+  :on-remove="handleRemove"
+  :before-remove="beforeRemove"
+  multiple
+  :on-exceed="handleExceed"
+  :auto-upload="false"
+  :file-list="fileList">
+  <el-button size="small" type="primary">点击上传</el-button>
+  <!-- <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div> -->
+</el-upload>
+    </div>
+     <div style="display:flex;  flex-direction: row; border:1px solid black;width：500px!important">
+        display:inline 在同一行，并且宽度就等于文字内容的宽度且设置宽度无用
+        <p>哈哈哈</p>
+        <p>嘻嘻</p>
+     </div>
   </div>
 </template>
 <script>
@@ -22,6 +42,11 @@ export default {
     return {
       imgUrl:
         'http://img4.imgtn.bdimg.com/it/u=2378606792,1096904360&fm=26&gp=0.jpg'
+    }
+  },
+  methods: {
+    beforeRemove (file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`)
     }
   }
 }
@@ -61,6 +86,29 @@ height:200px;
 // to {left:500px;}
 // }
 
+}
+.el-upload-list {
+    margin: 0;
+    padding: 0;
+    margin-top: -50px;
+    margin-left: 80px;
+    width: 80%;
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:center
+}
+.el-upload-list__item{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.el-upload-list__item:first-child {
+    margin-top: 5px;
+}
+.el-upload-list__item-name{
+  margin-right:10px
 }
 
 </style>

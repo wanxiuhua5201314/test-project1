@@ -39,7 +39,15 @@
       <div>
       </div>
     </div>
+    <div>
+      ES6学习笔记：
+       Babel：ES6转码器，将ES6转为ES5代码
+       <el-button type="primary" @click="testLetAndVar"> 测试let和Var</el-button>
+       <el-button type="primary" @click="testValue"> 变量的解构赋值</el-button>
+       <el-button type="primary" @click="newMethodsOfString"> 字符串的新增方法：includes(),startsWith(),endsWith(),repeat(),trimStart(),trimEnd()</el-button>
   </div>
+  </div>
+
 </template>
 <script>
 import moment from 'moment'
@@ -80,6 +88,61 @@ export default {
     console.log('历史记录是', historyInformation)
   },
   methods: {
+    // 测试let and var
+    testLetAndVar () {
+      var a = []
+      var b = []
+      for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+          console.log('i声明为var时', i)
+        }
+      };
+      for (let i = 0; i < 10; i++) {
+        b[i] = function () {
+          console.log('i声明为let时', i)
+        }
+      };
+      a[6]()
+      b[6]()
+    },
+    // 变量的解构赋值
+    testValue () {
+      // 数组解构赋值
+      let [a, b, c] = [[], [], []]
+      console.log('a,b,c的值分别是', a, b, c)
+      // 对象解构赋值
+      let {foo, bar} = {foo: 'aaa', bar: 'bbb'}
+      console.log('foo,bar的值分别是', foo, bar)
+      // 字符串的解构赋值
+      let [aa, bb, cc, dd] = 'hello'
+      console.log('aa,bb,cc,dd的值是', aa, bb, cc, dd)
+      let {length: len} = 'hello'
+      console.log('len是', len)
+      // 函数参数的解构赋值
+      function add ([x, y]) {
+        return x + y
+      };
+      console.log('函数参数解构赋值', add([1, 2]))
+    },
+    // 字符串新增的方法
+    newMethodsOfString () {
+      let str = 'hello,welcome to chongqing,nice to meet you ,I am your tourist guide'
+      let ss = str.includes('hello')
+      let sw = str.includes('hello', 10)
+      console.log('字符串中是否包含了hello', ss)
+      console.log('从第10个字符开始，字符串中是否包含了hello', sw)
+      let ss1 = str.startsWith('hello')
+      let sw1 = str.includes('hello', 10)
+      console.log('字符串是否以hello开头', ss1)
+      console.log('从第10个字符开始，字符串是否以hello开头', sw1)
+      let ss2 = str.endsWith('hello')
+      let sw2 = str.includes('hello', 10)
+      console.log('字符串是否以hello结尾', ss2)
+      console.log('前10个字符中，字符串是否以hello结尾', sw2)
+
+      let sr = 'hello'.repeat(3)
+      console.log('hello重复3次后的字符串是', sr)
+    },
     stop () {
       clearInterval(this.currentTime)
     },
