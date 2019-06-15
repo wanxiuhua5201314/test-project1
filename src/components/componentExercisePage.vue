@@ -1,6 +1,6 @@
 <template>
-<div class="component-exercise">
-    <div>
+<div class="component-exercise"  >
+    <div style="height:200px;width:100%">
       <div style="text-align:center;color:red"> 图片放大镜</div>
       <div style="width:200px;height:200px;margin-left:50px;float:left" >
         父组件给子组件传url路径时，不能传本地图片路径：
@@ -10,10 +10,11 @@
       动态图片绑定要加require: <img style="height:80%;" :src="imgUrl"/>
    </div>
     </div>
-     <div style="clear:both">
+     <div style="margin-top:50px;clear:both">
      <el-button type="primary" size="small" @click="getInfo"> node本地接口服务测试</el-button>
       姓名：{{personInfo.name}}
       年龄：{{personInfo.age}}
+      <div title="鼠标放在此处，测试title属性，OK!">鼠标放在此处，测试title属性</div>
    </div>
 </div>
 </template>
@@ -41,7 +42,13 @@ export default {
         console.log(error)
       })
     }
+  },
+  beforeDestroy () {
+    this.$alert('哈哈')
   }
+}
+window.onbeforeunload = () => {
+  return '嘻嘻嘻嘻'
 }
 </script>
 <style lang="scss">
