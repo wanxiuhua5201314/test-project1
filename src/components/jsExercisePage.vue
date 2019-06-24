@@ -1,86 +1,118 @@
 <template>
   <div class="js-exercise">
     <div style="width:10%;height:100%">
+     <span style="color:red"> 目录：</span>
       <ol>
-        <li><a href="#exercise1">杂乱练习</a></li>
-        <li><a href="#exercise2">浏览器对象练习</a></li>
-        <li><a href="#ES6">ES6练习</a></li>
+        <li>
+          <a href="#exercise1">杂乱练习</a>
+        </li>
+        <li>
+          <a href="#exercise2">浏览器对象练习</a>
+        </li>
+        <li>
+          <a href="#ES6">ES6练习</a>
+        </li>
+        <li>
+          <a href="#numberExtend">数值的扩展</a>
+        </li>
+        <li>
+          <a href="#functionExtend">函数的扩展</a>
+        </li>
+        <li>
+          <a href="#arrayExtend">数组的扩展</a>
+        </li>
+        <li>
+          <a href="#symbol">Symbol</a>
+        </li>
+        <li>
+          <a href="#setAndMap">set 和map结构</a>
+        </li>
       </ol>
     </div>
-  <div style="width:90%;height:100%">
-    <router-link to="/">返回主页</router-link>
-    <hr/>
-    <div id="exercise1">
-      <span style="color:red"> 杂乱练习:</span>
-      <div>
-        <el-button type="primary" @click="test">测试v-if与v-show</el-button>
-        <span v-if="trueT">v-if</span>
-        <span v-show="trueT">v-show</span>
-        <el-button type="primary" @click="clickC($event)">测试event</el-button>
-        <span ref="msgDiv">{{msg}}</span>
-        <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
-        <div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>
-        <el-button type="primary" @click="nextTick()">测试$nextTick方法</el-button>
-        <li class="list-group-item" v-for="(item,index) in menuItems" :key="item.index" @click="addClass(index)" :class="{'activeClass':position === index}">{{item}}</li>
-      </div>
+    <div style="width:90%;height:100%">
+      <router-link to="/">返回主页</router-link>
       <hr/>
-      <div id="exercise2">
-        <span style="color:red"> 浏览器对象练习：</span>
+      <div id="exercise1">
+        <span style="color:red"> 杂乱练习:</span>
         <div>
-          测试setInterval与clearInterval:
-          <el-input :value="realTime" style="width:50%"></el-input>
-          <span @click="stop">停止时间</span>
+          <el-button type="primary" @click="test">测试v-if与v-show</el-button>
+          <span v-if="trueT">v-if</span>
+          <span v-show="trueT">v-show</span>
+          <el-button type="primary" @click="clickC($event)">测试event</el-button>
+          <span ref="msgDiv">{{msg}}</span>
+          <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
+          <div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>
+          <el-button type="primary" @click="nextTick()">测试$nextTick方法</el-button>
+          <li class="list-group-item" v-for="(item,index) in menuItems" :key="item.index" @click="addClass(index)" :class="{'activeClass':position === index}">{{item}}</li>
         </div>
-        浏览器的名称:{{appName}}, 屏幕的宽/高：{{screenWidth}}/{{screenHight}} 屏幕可用宽/高: {{availWidth}}/{{availHight}}
+        <hr/>
+        <div id="exercise2">
+          <span style="color:red"> 浏览器对象练习：</span>
+          <div>
+            测试setInterval与clearInterval:
+            <el-input :value="realTime" style="width:50%"></el-input>
+            <span @click="stop">停止时间</span>
+          </div>
+          浏览器的名称:{{appName}}, 屏幕的宽/高：{{screenWidth}}/{{screenHight}} 屏幕可用宽/高: {{availWidth}}/{{availHight}}
+        </div>
+        <hr/>
+        <div>
+        </div>
       </div>
-      <hr/>
-      <div>
-      </div>
-    </div>
-    <div id="ES6">
-      <span style="color:red;font-size:18px">ES6学习笔记：</span>
-      Babel：ES6转码器，将ES6转为ES5代码
-      <el-button type="primary" @click="testLetAndVar"> 测试let和Var</el-button>
-      <el-button type="primary" @click="testValue"> 变量的解构赋值</el-button>
-      <el-button type="primary" @click="newMethodsOfString"> 字符串的新增方法：includes(),startsWith(),endsWith(),repeat(),trimStart(),trimEnd()</el-button>
-      <el-button type="primary" @click="verifyRegExp">正则表达式(还未学习!!!）</el-button>
-      <br/>
-      <div>
-      <span style="color:red"> 1、数值的扩展：</span>
-      （1）二进制和八进制分别用0b和0o表示。 （2）Number.isFinite,Number.isNaN分别用来检验数值是否是有限和是否为NaN
-      <el-button type="primary" size="small" @click="checkNumber">验证</el-button>
-      (3)es6将parseInt()和parseFloat，移植到Number对象上面。保持不变 ES5是parseInt("12.34"),Es6是Number.parseInt("12.34") (4)Number.isInteger:用来判断一个数值是否是整数，值得注意的是，整数和浮点数采用的是同样的储存方法，所以25和25.0被视为同一个值。
-      <el-button type="primary" size="small" @click="checkNumber1">验证</el-button>
-      (5)Math对象的扩展 Math.trunc():除去一个小数的小数部分，返回整数部分。对于非数值，会直接内部使用Number方法将其先转为数值。对于空值和无法截取整数的值，返回NaN。 Math.sign()方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先其转为数值。 参数为正数，返回+1；参数为负数，返回-1；参数为0，返回0；参数为-0，返回-0；其他值，返回NaN。
-      <el-button type="primary" size="small" @click="checkNumber2">验证</el-button>
-      Math.cbrt()： Math.cbrt方法用于计算一个数的立方根。 Math.hypot(): 返回所有参数的平方根和的平方根。
-      <br/>
-      </div>
-      <div>
-      <span style="color:red"> 2、函数的扩展: </span>
-      (1)es6允许为函数的参数设置默认值，即直接写在参数定义的后面。 (2)与解构赋值默认值结合使用
-      <el-button type="primary" size="small" @click="checkFunction">验证</el-button>
-      (3)函数的length属性：返回没有指定默认值的参数个数。
-      (4)箭头函数 :Es6允许使用箭头 (=>)定义函数。
-      </div>
-      <div>
-         <span style="color:red"> 3、数组的扩展: </span>
-         (1)扩展运算符：就是(...)  <el-button type="primary" size="small" @click="checkArray">验证</el-button>
-         (2)复制数组：数组是复合的数据类型，直接复制的话，只是复制了指向底层数据结构的指针，而不时克隆一个全新的数组。
-            <el-button type="primary" size="small" @click="checkArray1">验证（复制数组）</el-button>
-            <el-button type="primary" size="small" @click="checkArray2">验证（合并数组）</el-button>
-         (3)Array.from():该方法两类对象转为真正的数组：类似数组的对象和可遍历的对象
-              <el-button type="primary" size="small" @click="checkArray3">验证</el-button>
-         (4)Array.of():将一组值，转换为数组。
-         (5)find和findIndex():find方法用于找出第一个符合条件的数组成员。findIndex返回索引
+      <div id="ES6">
+        <span style="color:red;font-size:18px">ES6学习笔记：</span>
+        Babel：ES6转码器，将ES6转为ES5代码
+        <el-button type="primary" @click="testLetAndVar"> 测试let和Var</el-button>
+        <el-button type="primary" @click="testValue"> 变量的解构赋值</el-button>
+        <el-button type="primary" @click="newMethodsOfString"> 字符串的新增方法：includes(),startsWith(),endsWith(),repeat(),trimStart(),trimEnd()</el-button>
+        <el-button type="primary" @click="verifyRegExp">正则表达式(还未学习!!!）</el-button>
+        <br/>
+        <div id="numberExtend">
+          <span style="color:red"> 1、数值的扩展：</span>
+          （1）二进制和八进制分别用0b和0o表示。 （2）Number.isFinite,Number.isNaN分别用来检验数值是否是有限和是否为NaN
+          <el-button type="primary" size="small" @click="checkNumber">验证</el-button>
+          (3)es6将parseInt()和parseFloat，移植到Number对象上面。保持不变 ES5是parseInt("12.34"),Es6是Number.parseInt("12.34") (4)Number.isInteger:用来判断一个数值是否是整数，值得注意的是，整数和浮点数采用的是同样的储存方法，所以25和25.0被视为同一个值。
+          <el-button type="primary" size="small" @click="checkNumber1">验证</el-button>
+          (5)Math对象的扩展 Math.trunc():除去一个小数的小数部分，返回整数部分。对于非数值，会直接内部使用Number方法将其先转为数值。对于空值和无法截取整数的值，返回NaN。 Math.sign()方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先其转为数值。 参数为正数，返回+1；参数为负数，返回-1；参数为0，返回0；参数为-0，返回-0；其他值，返回NaN。
+          <el-button type="primary" size="small" @click="checkNumber2">验证</el-button>
+          Math.cbrt()： Math.cbrt方法用于计算一个数的立方根。 Math.hypot(): 返回所有参数的平方根和的平方根。
+          <br/>
+        </div>
+        <div id="functionExtend">
+          <span style="color:red"> 2、函数的扩展: </span>
+          (1)es6允许为函数的参数设置默认值，即直接写在参数定义的后面。 (2)与解构赋值默认值结合使用
+          <el-button type="primary" size="small" @click="checkFunction">验证</el-button>
+          (3)函数的length属性：返回没有指定默认值的参数个数。 (4)箭头函数 :Es6允许使用箭头 (=>)定义函数。
+        </div>
+        <div id="arrayExtend">
+          <span style="color:red"> 3、数组的扩展: </span>
+          (1)扩展运算符：就是(...)
+          <el-button type="primary" size="small" @click="checkArray">验证</el-button>
+          (2)复制数组：数组是复合的数据类型，直接复制的话，只是复制了指向底层数据结构的指针，而不时克隆一个全新的数组。
+          <el-button type="primary" size="small" @click="checkArray1">验证（复制数组）</el-button>
+          <el-button type="primary" size="small" @click="checkArray2">验证（合并数组）</el-button>
+          (3)Array.from():该方法两类对象转为真正的数组：类似数组的对象和可遍历的对象
+          <el-button type="primary" size="small" @click="checkArray3">验证</el-button>
+          (4)Array.of():将一组值，转换为数组。 (5)find和findIndex():find方法用于找出第一个符合条件的数组成员。findIndex返回索引
           <el-button type="primary" size="small" @click="checkArray4">验证</el-button>
-        (6)fill方法使用给定值，填充一个数组。['a','b','c'].fill(7,1,2):1,2分别代表填充的起始位置和结束位置。不填就默认全部代替
-        <el-button type="primary" size="small" @click="checkArray5">验证</el-button>
-        (7)数组的entries(),keys(),values():keys是对健名的遍历，values是对健值的遍历，entries是对键值对的遍历
-        (8)includes()；返回一个布尔值，表示某个数组是否包含给定的值
+          (6)fill方法使用给定值，填充一个数组。['a','b','c'].fill(7,1,2):1,2分别代表填充的起始位置和结束位置。不填就默认全部代替
+          <el-button type="primary" size="small" @click="checkArray5">验证</el-button>
+          (7)数组的entries(),keys(),values():keys是对健名的遍历，values是对健值的遍历，entries是对键值对的遍历 (8)includes()；返回一个布尔值，表示某个数组是否包含给定的值
+        </div>
+        <div id="symbol">
+          <span style="color:red"> 6、Symbol: 它是javaScript语言的第七种数据类型</span>
+          symbol是一种类似于字符串的数据类型。
+          <el-button type="primary" size="small" @click="checkSymbol">验证</el-button>
+        </div>
+        <div id="setAndMap">
+          <span style="color:red"> 7、set 和 map数据结构</span>
+          （1）set 类似于数组，但是成员的值都是唯一的，没有重复的值
+          <el-button type="primary" size="small" @click="checkSet">验证</el-button>
+          (2)set有keys()、values()、entries()、forEach()方法 (3)map的属性和操作方法：size属性、set(key,value)、get(key)、has(Key)、delet(key)、clear()：清除所有成员、没有返回值 (4)与其他数据结构的互相转换：Map转为数组、数组转为Map、map转为对象、对象转为map、map转为json、json转为map
+
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
@@ -256,7 +288,7 @@ export default {
       const a1 = [1, 2]
       const a2 = a1
       a2[0] = 2
-      console.log('a1,a2的值分别是：', a1, a2)// a1也会发生改变，因为a2并不是a1的克隆，而是指向同一份数据的另一个指针。
+      console.log('a1,a2的值分别是：', a1, a2) // a1也会发生改变，因为a2并不是a1的克隆，而是指向同一份数据的另一个指针。
       const a3 = [3, 4]
       const a4 = a3.concat()
       a4[0] = 0
@@ -286,12 +318,36 @@ export default {
     },
     // 验证find方法
     checkArray4 () {
-      console.log('[1, 2, -5, -4].find((n) => n < 0)和[1, 2, -5, -4].findIndex((n) => n < 0)返回来的结果是', [1, 2, -5, -4].find((n) => n < 0), [1, 2, -5, -4].findIndex((n) => n < 0))
+      console.log(
+        '[1, 2, -5, -4].find((n) => n < 0)和[1, 2, -5, -4].findIndex((n) => n < 0)返回来的结果是',
+        [1, 2, -5, -4].find(n => n < 0),
+        [1, 2, -5, -4].findIndex(n => n < 0)
+      )
     },
     // 验证fill方法
     checkArray5 () {
       console.log("['a', 'b', 'c'].fill(7)的值是：", ['a', 'b', 'c'].fill(7))
-      console.log("['a', 'b', 'c'].fill(7,1,3)的值是：", ['a', 'b', 'c'].fill(7, 1, 3))
+      console.log(
+        "['a', 'b', 'c'].fill(7,1,3)的值是：",
+        ['a', 'b', 'c'].fill(7, 1, 3)
+      )
+    },
+    // 验证symbol
+    checkSymbol () {
+      console.log(
+        "Symbol('foo')和Symbol('bar')返回来的结果分别是：",
+        Symbol('foo'),
+        Symbol('bar')
+      )
+    },
+    // 验证set
+    checkSet () {
+      let s = new Set();
+      [2, 3, 4, 5, 2, 5].forEach(x => s.add(x))
+      console.log('s的结果是', s)
+      console.log('[...new Set([2, 2, 3, 1, 4, 5])]的值是：', [
+        ...new Set([2, 2, 3, 1, 4, 5])
+      ])
     },
     addClass (index) {
       this.position = index
@@ -303,7 +359,7 @@ export default {
 .js-exercise {
   padding: 20px;
   display: flex;
- box-sizing:border-box;
+  box-sizing: border-box;
   justify-content: flex-start;
   .el-button {
     border-radius: 0px;
