@@ -1,11 +1,13 @@
 <template>
   <div>
     changableNum:{{changebleNumValue}}
-     <el-button type="primary" size="small" @click="newNum">直接提交mutation改变值</el-button>
-    <el-button type="primary" size="small" @click="byCommitChange">通过actions改变值</el-button>
+    <el-button type="primary" size="small" @click="newNum1">直接提交mutation改变值</el-button>
+    <el-button type="primary" size="small" @click="byCommitChange1">通过actions改变值</el-button>
   </div>
 </template>
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const {mapState, mapMutations, mapActions} = createNamespacedHelpers('vueStore2')
 export default {
   name: 'vueConponentTwo',
   data () {
@@ -14,16 +16,18 @@ export default {
     }
   },
   computed: {
-    changebleNumValue () {
-      return this.$store.state.changebleNum
-    }
+    ...mapState({
+      changebleNumValue: state => state.changebleNum
+    })
   },
   methods: {
-    newNum () {
-      this.$store.commit('newNum', 2)
+    ...mapMutations(['newNum']),
+    ...mapActions(['byCommitChange']),
+    newNum1 () {
+      this.newNum(3)
     },
-    byCommitChange () {
-      this.$store.dispatch('byCommitChange', 2)
+    byCommitChange1 () {
+      this.byCommitChange(3)
     }
   }
 }
