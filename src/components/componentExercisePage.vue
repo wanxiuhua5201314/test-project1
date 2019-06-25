@@ -20,8 +20,6 @@
 </template>
 <script>
 import kdMagnify from './componentExercise/kd-magnify.vue'
-/* import axios from 'axios' */
-// <img src="/static/img/testMagnify.ae01753.jpg">
 export default {
   components: {
     kdMagnify

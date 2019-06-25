@@ -22,8 +22,16 @@ const mutations = {
   },
   newNum (state, sum) {
     state.changebleNum += sum
+  },
+  newNum1 (state, res) {
+    state.changebleNum = res
   }
-
 }
-const store = new Vuex.Store({state, getters, mutations})
+const actions = {
+  byCommitChange (context, value) {
+    let res = state.changebleNum + value
+    context.commit('newNum1', res)
+  }
+}
+const store = new Vuex.Store({state, getters, mutations, actions})
 export default store

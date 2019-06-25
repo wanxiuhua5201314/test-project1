@@ -2,6 +2,7 @@
   <div class="js-exercise">
     <router-link to="/">返回主页</router-link>
     <router-link to="/ES6ExercisePage">Es6更多练习</router-link>
+    <router-link to="/vueExercisePage">vue练习</router-link>
     <hr/>
     <div>
       <span style="color:red"> 锚点练习：</span>
