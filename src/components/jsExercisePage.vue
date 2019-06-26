@@ -1,17 +1,14 @@
 <template>
   <div class="js-exercise">
     <div style="width:20%;height;100%">
-     <span style="font-size:18px;color:red"> 目录: </span>
-      <ol>
-        <li>
     <router-link to="/">返回主页</router-link>
     <router-link to="/ES6ExercisePage">Es6更多练习</router-link>
     <router-link to="/vueExercisePage">vue练习</router-link>
     <hr/>
-    <div>
-      <span style="color:red"> 锚点练习：</span>
-      <div>
-        <a href="#exercise1">杂乱练习</a>
+      <span style="color:red"> 目录:</span>
+      <ol>
+      <li>
+       <a href="#exercise1">杂乱练习</a>
         </li>
         <li>
         <a href="#exercise2">浏览器对象练习</a>
@@ -35,8 +32,6 @@
     </div>
     <div style="width:80%;height:100%">
       <div id="exercise1">
-         <router-link to="/">返回主页</router-link>
-         <router-link to="/ES6ExercisePage">Es6更多练习</router-link>
          <hr/>
         <span style="color:red"> 杂乱练习:</span>
         <div>
@@ -61,8 +56,6 @@
           浏览器的名称:{{appName}}, 屏幕的宽/高：{{screenWidth}}/{{screenHight}} 屏幕可用宽/高: {{availWidth}}/{{availHight}}
         </div>
         <hr/>
-        <div>
-        </div>
       </div>
       <div id="ES6">
         <span style="color:red;font-size:18px">ES6学习笔记：</span>
