@@ -7,6 +7,7 @@ import htmlExercisePage from '@/components/htmlExercisePage.vue'
 import componentExercisePage from '@/components/componentExercisePage.vue'
 import projectPage from '@/components/projectPage'
 import ES6ExercisePage from '@/components/ES6ExercisePage'
+import vueExercisePage from '@/components/vueExercisePage'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -43,6 +44,11 @@ export default new Router({
       path: '/ES6ExercisePage',
       name: 'ES6ExercisePage',
       component: ES6ExercisePage
+    },
+    {
+      path: '/vueExercisePage',
+      name: 'vueExercisePage',
+      component: vueExercisePage
     }
   ]
 })

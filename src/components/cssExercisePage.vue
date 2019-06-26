@@ -34,6 +34,40 @@
         <p>哈哈哈</p>
         <p>嘻嘻</p>
      </div>
+  <div>
+    <span style="color:red">CSS基础练习:</span>
+    <p> 1、测试块级元素和 <em>行内元素（强调的内容以协议来显示）</em></p>
+    <p1>将块级元素的display改为inline和 <em>行内元素（将行内元素的display改为block）[展示效果]</em></p1>
+    <br/>
+    2、引入css样式，有3种方式：(1)使用link标记：用于引入外部样式（2）style元素：定义内部的样式、（3）@import指令：用于引入外部样式
+    <br/>
+    3、 link标记和@import指令不同之处在于：link标记必须放在head元素中，@import指令放在style容器中，且要放在其他css规则之前。
+     <br/>
+    4、<span class="test-one" id="test-two" title="哈哈">类选择器和ID选择器都是区分大小写的</span>
+    <br/>
+    5.可以多尝试用属性选择器，如h1[class]{color:red}:表示给所有有class属性的h1加字体颜色样式
+    <br/>
+    6.根据部分属性值选择，如p[class~="warning"]{color:red}:
+    <span class="warning warn">class包含了waring的标签1。 </span>
+    <span class="warning wa">class包含了waring的标签2。 </span>
+    其中这种写法与p.warnig{}作用一样
+    <br/>
+    "~="这种选择器的优势在于它能用于任何属性，而不只是class
+    <br/>
+    <!-- <planet type="barren">planet标签</planet> -->
+    7、子串匹配属性选择器：
+    "class^=cloud":选择class属性值以cloud开头的所有元素
+    "class$=cloud":选择class属性值以cloud结尾的所有元素
+    "class*=cloud":选择class属性值包含字串‘cloud’的所有元素
+    <br/>
+    (1) <span class="cloud win">span[class^="cloud"]：选择以class属性值为cloud开头的所有元素</span>
+    (2)<span class="win cloud">span[class^="win cloud "]：选择以class属性值为cloud开头的所有元素</span>
+    8、*[lang|='en']:选择lang属性等于en或者以en-开头的所有元素
+    <br/>
+    9、h1>strong{color:red}:选择的只是作为一个h1元素子元素（而不是后代元素）的strong元素。
+    <span><strong>span的子元素就是strong</strong></span>
+    <span><em><strong>span的子元素就是em,em下是strong子元素</strong></em></span>
+  </div>
   </div>
 </template>
 <script>
@@ -54,6 +88,7 @@ export default {
 <style lang="scss">
 .css-exercise{
   margin:0;
+  padding:20px;
   height:100%;
  .test-animation{
    position:relative;
@@ -80,12 +115,6 @@ transition:width 2s, height 5s;
 height:200px;
   transform:rotate(180deg);
 }
-// @-webkit-keyframes mymove
-// {
-// from {left:0px;}
-// to {left:500px;}
-// }
-
 }
 .el-upload-list {
     margin: 0;
@@ -110,5 +139,29 @@ height:200px;
 .el-upload-list__item-name{
   margin-right:10px
 }
-
+p1{
+  display: inline;
+  em{
+    display: block;
+  }
+}
+.test-oNe{
+  color:red;
+}
+#test-two{
+  color:red
+}
+*[title]{
+  font-weight: bold;
+}
+planet[type="barren"]{
+  color:red
+}
+span[class~='warning']{
+  color:blue
+}
+span[class^="cloud"]{
+  color:purple
+}
+span>strong{color:orange}
 </style>
