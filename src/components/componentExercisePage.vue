@@ -45,9 +45,9 @@ export default {
     this.$alert('哈哈')
   }
 }
-window.onbeforeunload = () => {
+/* window.onbeforeunload = () => {
   return '嘻嘻嘻嘻'
-}
+} */
 </script>
 <style lang="scss">
 .component-exercise {

@@ -36,6 +36,7 @@
      </div>
   <div>
     <span style="color:red">CSS基础练习:</span>
+     <router-link to="/cssExerciseMorePage">css更多练习</router-link>
     <p> 1、测试块级元素和 <em>行内元素（强调的内容以协议来显示）</em></p>
     <p1>将块级元素的display改为inline和 <em>行内元素（将行内元素的display改为block）[展示效果]</em></p1>
     <br/>
@@ -54,7 +55,6 @@
     <br/>
     "~="这种选择器的优势在于它能用于任何属性，而不只是class
     <br/>
-    <!-- <planet type="barren">planet标签</planet> -->
     7、子串匹配属性选择器：
     "class^=cloud":选择class属性值以cloud开头的所有元素
     "class$=cloud":选择class属性值以cloud结尾的所有元素
@@ -75,7 +75,8 @@ export default {
   data () {
     return {
       imgUrl:
-        'http://img4.imgtn.bdimg.com/it/u=2378606792,1096904360&fm=26&gp=0.jpg'
+        'http://img4.imgtn.bdimg.com/it/u=2378606792,1096904360&fm=26&gp=0.jpg',
+      inputValue: ''
     }
   },
   methods: {

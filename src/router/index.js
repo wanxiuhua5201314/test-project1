@@ -2,12 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import mainPage from '@/components/mainPage'
 import cssExercisePage from '@/components/cssExercisePage.vue'
+import cssExerciseMorePage from '@/components/cssExercise/cssExerciseMorePage.vue'
 import jsExercisePage from '@/components/jsExercisePage.vue'
 import htmlExercisePage from '@/components/htmlExercisePage.vue'
 import componentExercisePage from '@/components/componentExercisePage.vue'
 import projectPage from '@/components/projectPage'
 import ES6ExercisePage from '@/components/ES6ExercisePage'
 import vueExercisePage from '@/components/vueExercisePage'
+import jsExerciseMorePage from '@/components/jsExerciseMorePage'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -21,9 +23,19 @@ export default new Router({
       component: cssExercisePage
     },
     {
+      path: '/cssExerciseMorePage',
+      name: 'cssExerciseMorePage',
+      component: cssExerciseMorePage
+    },
+    {
       path: '/jsExercisePage',
       name: 'jsExercisePage',
       component: jsExercisePage
+    },
+    {
+      path: '/jsExerciseMorePage',
+      name: 'jsExerciseMorePage',
+      component: jsExerciseMorePage
     },
     {
       path: '/htmlExercisePage',
