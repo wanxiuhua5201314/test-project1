@@ -88,6 +88,7 @@
           <el-button type="primary" size="small" @click="checkArray">验证</el-button>
           (2)复制数组：数组是复合的数据类型，直接复制的话，只是复制了指向底层数据结构的指针，而不时克隆一个全新的数组。
           <el-button type="primary" size="small" @click="checkArray1">验证（复制数组）</el-button>
+          <el-button type="primary" size="small" @click="checkArray11">验证（深拷贝数组[数组里是对象]）</el-button>
           <el-button type="primary" size="small" @click="checkArray2">验证（合并数组）</el-button>
           (3)Array.from():该方法两类对象转为真正的数组：类似数组的对象和可遍历的对象
           <el-button type="primary" size="small" @click="checkArray3">验证</el-button>
@@ -291,6 +292,21 @@ export default {
       const a4 = a3.concat()
       a4[0] = 0
       console.log('a3,a4的值分别是：', a3, a4)
+    },
+    // 深拷贝数组，数组里是对象
+    checkArray11 () {
+      // [...arr]这种深拷贝方式只试用于 数组里是基本数据类型
+      // 如果数组里是对象，那可以用JSON.parse(JSON.stringify(a1))这种方式实现深拷贝
+      let a1 = [{name: 'wxh', age: '25'}, {name: 'zzm', age: '27'}]
+      let a11 = [1, 2, 3]
+      // let a2 = [...a1]
+      let a3 = JSON.parse(JSON.stringify(a1))
+      let a22 = [...a11]
+      a3[0].age = 19
+      // a2[0].age = 18
+      a22[0] = 4
+      console.log('a1,a3分别是是', a1, a3)
+      console.log('a11,a22是', a11, a22)
     },
     // 合并数组
     checkArray2 () {
