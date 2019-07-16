@@ -4,6 +4,7 @@
     <router-link to="/">返回主页</router-link>
     <router-link to="/ES6ExercisePage">Es6更多练习</router-link>
     <router-link to="/vueExercisePage">vue练习</router-link>
+     <router-link to="/jsExerciseMorePage">js更多练习</router-link>
     <hr/>
       <span style="color:red"> 目录:</span>
       <ol>
