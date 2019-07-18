@@ -1,4 +1,5 @@
 <template>
+
     <div id="jsExerciseMorePage">
        <span style="color:red"> 提示：页面进来后直接f12看控制台，有一些代码返回的结果</span>
        <br/>
@@ -9,6 +10,9 @@
     <br/>
     验证websocket
     <el-button @click="send">发消息</el-button>
+    <br/>
+    验证async、await、promise、resolve：
+    <el-button @click="verifyInterface">验证(ps:方法里有接口,记得启动node服务)</el-button> {{testInterfaceData}}
     </div>
 </template>
 <script>
@@ -37,7 +41,9 @@ export default {
     return {
       arr: [],
       path: 'ws://192.168.0.200:8005/qrCodePage/ID=1/refreshTime=5',
-      socket: ''
+      socket: '',
+      testInterfaceData: '',
+      testData: ''
     }
   },
   mounted () {
@@ -80,6 +86,26 @@ export default {
       console.log('shift操作后', this.arr)
       console.log('unshift操作', this.arr.unshift('wwww'))
       console.log('unshift操作后', this.arr)
+    },
+    async  getInfo () {
+      console.log('开始调用getInfo方法')
+      this.testData = await new Promise((resolve, reject) => {
+        this.$axios('http://localhost:8081/info').then(res => {
+          console.log('接口请求成功，接口返回来的结果是 ', res)
+          resolve(res.data)
+        }).catch(error => {
+          console.log(error)
+        })
+      })
+      console.log(this.testData)
+      this.test()
+    },
+    verifyInterface () {
+      this.getInfo()
+    },
+    test () {
+      this.testInterfaceData = this.testData
+      console.log('执行的代码')
     }
   },
   destroyed () {
