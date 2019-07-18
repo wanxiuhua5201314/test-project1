@@ -6,6 +6,9 @@
        结论：(1)let value= arr.push():arr是增加后的数组，value是增加后数组的长度
            （2）let value=arr.shift():arr是移除原数组第一项后的数组，value是原数组第一项的值
             （3）let value=arr.unshift("hh"):arr是把hh增加到数组第一项后的数组，value是增加后的长度
+    <br/>
+    验证websocket
+    <el-button @click="send">发消息</el-button>
     </div>
 </template>
 <script>
@@ -32,10 +35,44 @@ console.log('调用对象的toLocaleString方法：', people.toLocaleString())
 export default {
   data () {
     return {
-      arr: []
+      arr: [],
+      path: 'ws://192.168.0.200:8005/qrCodePage/ID=1/refreshTime=5',
+      socket: ''
     }
   },
+  mounted () {
+    this.init()
+  },
   methods: {
+    init () {
+      if (typeof (WebSocket) === 'undefined') {
+        alert('您的浏览器不支持socket')
+      } else {
+        // 实例化soket
+        this.socket = new WebSocket(this.path)
+        // 监听socket连接
+        this.socket.onopen = this.open()
+        // 监听socket错误消息
+        this.socket.onerror = this.error()
+        // 监听socket消息
+        this.socket.onmessage = this.getMessge()
+      }
+    },
+    open () {
+      console.log('socket连接成功')
+    },
+    error () {
+      console.log('连接错误')
+    },
+    getMessage (msg) {
+      console.log(msg.data)
+    },
+    send () {
+      this.socket.send()
+    },
+    close () {
+      console.log('socket已经关闭')
+    },
     verifyPush () {
       let alength = this.arr.push('hah', 'heiehi')
       console.log('push操作返回来的是数组的length', alength)
@@ -44,6 +81,10 @@ export default {
       console.log('unshift操作', this.arr.unshift('wwww'))
       console.log('unshift操作后', this.arr)
     }
+  },
+  destroyed () {
+    // 销毁监听
+    this.socket.onclose = this.close()
   }
 }
 </script>
