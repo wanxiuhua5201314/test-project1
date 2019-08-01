@@ -13,6 +13,11 @@
     <br/>
     验证async、await、promise、resolve：
     <el-button @click="verifyInterface">验证(ps:方法里有接口,记得启动node服务)</el-button> {{testInterfaceData}}
+    <br/>
+    <br/>
+    <el-button @click="verifyPromise">更深层次的研究promise</el-button>
+    验证$notify
+    <el-button @click="notify">验证</el-button>
     </div>
 </template>
 <script>
@@ -50,6 +55,13 @@ export default {
     this.init()
   },
   methods: {
+    notify () {
+      this.$notify({
+        title: 'Success',
+        message: 'delete successfully',
+        type: 'success'
+      })
+    },
     init () {
       if (typeof (WebSocket) === 'undefined') {
         alert('您的浏览器不支持socket')
@@ -106,6 +118,9 @@ export default {
     test () {
       this.testInterfaceData = this.testData
       console.log('执行的代码')
+    },
+    verifyPromise () {
+
     }
   },
   destroyed () {
