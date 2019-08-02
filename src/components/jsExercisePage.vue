@@ -111,6 +111,8 @@
           (2)set有keys()、values()、entries()、forEach()方法 (3)map的属性和操作方法：size属性、set(key,value)、get(key)、has(Key)、delet(key)、clear()：清除所有成员、没有返回值 (4)与其他数据结构的互相转换：Map转为数组、数组转为Map、map转为对象、对象转为map、map转为json、json转为map
 
         </div>
+         <!-- 测试merge ,master分支添加
+    嘿嘿-->
       </div>
     </div>
   </div>

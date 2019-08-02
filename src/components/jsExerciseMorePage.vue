@@ -20,6 +20,8 @@
     <el-button @click="notify">验证</el-button>
     <br/>
      <el-button @click="notifyforEach">验证forEach</el-button>
+    <!-- 测试merge ,master分支添加
+    哈哈哈-->
     </div>
     <!-- 测试merge -->
 </template>
