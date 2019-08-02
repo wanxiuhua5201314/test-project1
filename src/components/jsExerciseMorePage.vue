@@ -18,6 +18,8 @@
     <el-button @click="verifyPromise">更深层次的研究promise</el-button>
     验证$notify
     <el-button @click="notify">验证</el-button>
+    <br/>
+     <el-button @click="notifyforEach">验证forEach</el-button>
     </div>
 </template>
 <script>
@@ -55,6 +57,12 @@ export default {
     this.init()
   },
   methods: {
+    notifyforEach () {
+      let arr = []
+      arr.forEach(item => {
+        console.log(item)
+      })
+    },
     notify () {
       this.$notify({
         title: 'Success',
