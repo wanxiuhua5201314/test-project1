@@ -21,6 +21,7 @@
     <br/>
      <el-button @click="notifyforEach">验证forEach</el-button>
     </div>
+    <!-- 测试merge -->
 </template>
 <script>
 var person1 = {
