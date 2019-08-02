@@ -18,6 +18,8 @@
     <el-button @click="verifyPromise">更深层次的研究promise</el-button>
     验证$notify
     <el-button @click="notify">验证</el-button>
+    <!-- 测试merge ,master分支添加
+    哈哈哈-->
     </div>
 </template>
 <script>
