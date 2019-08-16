@@ -11,7 +11,7 @@
     验证websocket
     <el-button @click="send">发消息</el-button>
     <br/>
-    验证async、await、promise、resolve：
+    验证async、await、promise、resolve：getMessge
     <el-button @click="verifyInterface">验证(ps:方法里有接口,记得启动node服务)</el-button> {{testInterfaceData}}
     <br/>
     <br/>
@@ -22,6 +22,10 @@
      <el-button @click="notifyforEach">验证forEach</el-button>
     <!-- 测试merge ,master分支添加
     哈哈哈-->
+     <br/>
+       json数据格式和对象区别是：(1)json里的属性有""双引号;(2)json数据中不能有函数；JSON.stringify()把一个对象转为JSON字符串时，这个函数会自动去除对象中的函数<el-button @click="verifyJson"> 验证</el-button>
+    <br/>
+    <router-link to="./testVueInstallPage"> 测试vue install</router-link>
     </div>
     <!-- 测试merge -->
 </template>
@@ -57,9 +61,22 @@ export default {
     }
   },
   mounted () {
-    this.init()
+    // this.init()
   },
   methods: {
+    // 验证json和对象
+    verifyJson () {
+      let obj = {
+        name: 'wan',
+        age: 12,
+        do: function () {
+          console.log('哈哈哈哈')
+        }
+      }
+      console.log('obj是', obj)
+      let convertObj = JSON.stringify(obj)
+      console.log('covertObj是', convertObj)
+    },
     notifyforEach () {
       let arr = []
       arr.forEach(item => {
@@ -73,19 +90,22 @@ export default {
         type: 'success'
       })
     },
-    init () {
-      if (typeof (WebSocket) === 'undefined') {
-        alert('您的浏览器不支持socket')
-      } else {
-        // 实例化soket
-        this.socket = new WebSocket(this.path)
-        // 监听socket连接
-        this.socket.onopen = this.open()
-        // 监听socket错误消息
-        this.socket.onerror = this.error()
-        // 监听socket消息
-        this.socket.onmessage = this.getMessge()
-      }
+    // init () {
+    //   if (typeof (WebSocket) === 'undefined') {
+    //     alert('您的浏览器不支持socket')
+    //   } else {
+    //     // 实例化soket
+    //     this.socket = new WebSocket(this.path)
+    //     // 监听socket连接
+    //     this.socket.onopen = this.open()
+    //     // 监听socket错误消息
+    //     this.socket.onerror = this.error()
+    //     // 监听socket消息
+    //     this.socket.onmessage = this.getMessge()
+    //   }
+    // },
+    getMessge () {
+
     },
     open () {
       console.log('socket连接成功')
@@ -133,11 +153,11 @@ export default {
     verifyPromise () {
 
     }
-  },
-  destroyed () {
-    // 销毁监听
-    this.socket.onclose = this.close()
   }
+  // destroyed () {
+  //   // 销毁监听
+  //   this.socket.onclose = this.close()
+  // }
 }
 </script>
 <style lang="scss">

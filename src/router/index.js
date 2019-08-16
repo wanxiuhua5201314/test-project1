@@ -10,6 +10,7 @@ import projectPage from '@/components/projectPage'
 import ES6ExercisePage from '@/components/ES6ExercisePage'
 import vueExercisePage from '@/components/vueExercisePage'
 import jsExerciseMorePage from '@/components/jsExerciseMorePage'
+import testVueInstallPage from '@/components/testVueInstallPage'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -61,6 +62,12 @@ export default new Router({
       path: '/vueExercisePage',
       name: 'vueExercisePage',
       component: vueExercisePage
+    },
+    {
+      path: '/testVueInstallPage',
+      name: 'testVueInstallPage',
+      component: testVueInstallPage
     }
+
   ]
 })

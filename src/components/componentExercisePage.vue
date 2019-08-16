@@ -15,14 +15,19 @@
       姓名：{{personInfo.name}}
       年龄：{{personInfo.age}}
       <div title="鼠标放在此处，测试title属性，OK!">鼠标放在此处，测试title属性</div>
+      <br/>
+     下拉框树组件：
+      <select-tree></select-tree>
    </div>
 </div>
 </template>
 <script>
 import kdMagnify from './componentExercise/kd-magnify.vue'
+import selectTree from './selectTree.vue'
 export default {
   components: {
-    kdMagnify
+    kdMagnify,
+    selectTree
   },
   data () {
     return {
