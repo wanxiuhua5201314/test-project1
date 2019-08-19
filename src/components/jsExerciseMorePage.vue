@@ -25,7 +25,6 @@
      <br/>
        json数据格式和对象区别是：(1)json里的属性有""双引号;(2)json数据中不能有函数；JSON.stringify()把一个对象转为JSON字符串时，这个函数会自动去除对象中的函数<el-button @click="verifyJson"> 验证</el-button>
     <br/>
-    <router-link to="./testVueInstallPage"> 测试vue install</router-link>
     </div>
     <!-- 测试merge -->
 </template>

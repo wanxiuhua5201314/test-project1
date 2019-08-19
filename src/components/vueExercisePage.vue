@@ -8,6 +8,8 @@
      </vue-conponent-one>
      <vue-conponent-two ref="vueConponentTwo"></vue-conponent-two>
      </div>
+     <br/>
+      <router-link to="./testVueInstallPage"> 测试vue install</router-link>
   </div>
 </template>
 <script>
