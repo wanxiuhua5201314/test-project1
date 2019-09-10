@@ -25,6 +25,11 @@
      <br/>
        json数据格式和对象区别是：(1)json里的属性有""双引号;(2)json数据中不能有函数；JSON.stringify()把一个对象转为JSON字符串时，这个函数会自动去除对象中的函数<el-button @click="verifyJson"> 验证</el-button>
     <br/>
+    <br/>
+    检测数组元素中是否有元素符合指定条件：
+    <button @click="testSome">测试 数组的some方法</button><span id="some"></span> &nbsp;&nbsp;&nbsp;<span id="some1"></span>
+    &nbsp;&nbsp;&nbsp;<span id="some2"></span>
+     <br/>
     </div>
     <!-- 测试merge -->
 </template>
@@ -63,6 +68,15 @@ export default {
     // this.init()
   },
   methods: {
+    testSome () {
+      let ages = [3, 10, 18, 20]
+      document.getElementById('some').innerHTML = ages.some((item) => {
+        return item > 17
+      })
+      document.getElementById('some1').innerHTML = Array.from('RUNOOB')
+      let str = 'hello world!'
+      document.getElementById('some2').innerHTML = str.sup()
+    },
     // 验证json和对象
     verifyJson () {
       let obj = {

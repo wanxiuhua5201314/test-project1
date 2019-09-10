@@ -8,12 +8,68 @@
        <el-button style="margin-left:-5px" type="danger">搜索</el-button>
        </el-main>
     </el-container>
+      <button @click="playPause()">播放/暂停</button>
+      <button @click="makeBig()">大</button>
+      <button @click="makeNormal()">中</button>
+      <button @click="makeSmall()">小</button>
+      <video id="video1" src="http://video.699pic.com/videos/04/54/34/a_NdVdi6RRDJXw1547045435_10s.mp4" ></video>
+      <button @click="setCanvas">画画布</button>
+      <canvas id="myCanvas" width="200" height="100"></canvas>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+           <polygon points="100,10 40,180 190,60 10,60 160,180"
+                  style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+     </svg>
+     <p id="demo"></p>
+     <button @click="getPosition">获取定位</button>
+     输入框type为email时： <input type="email"/>
+     输入框type为url时：<input type="url"/>
+     输入框type为number时：<input type="number">
+     输入框type为range时：<input type="range">
+     输入框type为Date pickers时：<input type="date">
+     输入框type为search时：<input type="search">
+     输入框type为color时：<input type="color"/>
+     表单元素的datalist属性：
+     <input type="url" list="url_list" name="link"/>
+     <datalist id="url_list">
+<option label="W3Schoole" value="http://www.w3school.com.cnDASFADLSKFADSFALADSLAFSFDASFKADSLFJLDJSKAL"/>
+<option label="Google" value="http://www.google.com" />
+<option label="Microsoft" value="http://www.microsoft.com" />
+    </datalist>
     </div>
 </template>
 <script>
 export default {
   data () {
     return {
+    }
+  },
+  methods: {
+    // 获取定位
+    getPosition () {
+      let x = document.getElementById('demo')
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition)
+      } else {
+        x.innerHTML = 'Geolocation is not supported by this browser'
+      }
+    },
+    showPosition (position) {
+      let x = document.getElementById('demo')
+      x.innerHTML = 'Latitude' + position.coords.latitude + '<br/>Longtitude:' + position.coords.longtitude
+    },
+    setCanvas () {
+      var c = document.getElementById('myCanvas')
+      var cxt = c.getContext('2d')
+      cxt.fillStyle = '#FF0000'
+      cxt.fillRect(0, 0, 150, 75)
+    },
+    playPause () {
+      var myVideo = document.getElementById('video1')
+      if (myVideo.paused) {
+        myVideo.play()
+      } else {
+        myVideo.pause()
+      }
     }
   }
 }
