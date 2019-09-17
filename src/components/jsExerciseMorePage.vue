@@ -30,6 +30,41 @@
     <button @click="testSome">测试 数组的some方法</button><span id="some"></span> &nbsp;&nbsp;&nbsp;<span id="some1"></span>
     &nbsp;&nbsp;&nbsp;<span id="some2"></span>
      <br/>
+     <span style="color:red">5、js原型和原型链&nbsp;&nbsp;&nbsp;<a href="https://blog.csdn.net/lc237423551/article/details/80010100" target="_blank">学习链接</a></span>
+     <br/>
+     1、所有引用类型(函数、数组、对象)都拥有_proto_属性(隐式原型)
+     <br/>
+     2、所有函数都拥有prototype属性(显示原型)(仅限函数)
+      <br/>
+     3、实例继承构造函数的方法。
+      <br/>
+     4、可以把js里的函数当成一个类，new出来的就是实例对象。
+      <br/>
+     5、函数A有个属性名prototype,prototype指向的是对象B,B就是函数A的原型对象，简称原型。这个原型对象B，有个属性constructor指向了这个函数A，
+       意思是说：constructor属性的值是函数A。
+        <br/>
+    6、hasOwnProperty()方法，可以判断一个属性是否来自对象本身。
+     <br/>
+    7、in 操作符，先在对象本身中找，如果找不到会去原型中找。
+     <br/>
+    8、js中所有的对象[function,Array,{}]都是Object的实例，并继承Object.prototype的属性和方法，也就是说，Object.prototype是所有对象的爸爸。
+     <br/>
+    9、_proto_指向的是这个对象的构照函数的prototype。
+     <br/>
+    10.凡是对象都只有一个属性那就是__proto__。
+    <br/>
+    11、<span style="color:red">原型链：</span>
+    <br/>
+    toString其实是Object.prototype里的方法。那么为什么所有对象都有toString方法，其实实例化对象本身是没有toString方法的。它会一层一层往上找。
+    <br/>
+    例如 构造函数A,A的实例对象AA,AA.__proto===A.prototype;A.prototype.__proto===Objec.prototype。
+     <br/>
+     12、js中给原型对象添加属性和方法
+     <br/>方式一：给原型对象添加成员&nbsp;&nbsp;&nbsp;语法：构照函数.prototype.方法名=function(){}。
+     <br/>方式二：替换原型对象（不是覆盖，而是替换，把原先的同名的直接替换成现在的）&nbsp;&nbsp;&nbsp;语法：构照函数.prototype.方法名={}。
+     <br/>方式二不常用，因为这样会修改了原型本身。
+
+    <button @click="verifyYuanXing">验证原型和原型链</button>
     </div>
     <!-- 测试merge -->
 </template>
@@ -68,6 +103,58 @@ export default {
     // this.init()
   },
   methods: {
+    // 验证原型和原型链
+    verifyYuanXing () {
+      function A (a) {
+        this.a = a
+      }
+      console.log('A是', A)
+      console.log('A的原型是', A.prototype)
+      // console.log('A.prototype.__proto__是', A.prototype.__proto__)
+      console.log('Object.prototype是', Object.prototype)
+      //  A.prototype.__proto === Object.prototype
+      function B (b) {
+        this.c = b
+      }
+      var bb = new B('lc')
+      console.log('b是', bb)
+      // console.log('b.__proto__===B.prototype的结果是', bb.__proto__ === B.prototype)
+      let ss = {
+        name: 'wxh',
+        age: 26
+      }
+      console.log('ss是:', ss)
+      // console.log('ss的__proto__属性是否和Object.protoType相等', ss.__proto__ === Object.prototype) // true
+      console.log('Object是', Object)
+      let ss1 = ['1']
+      console.log('ss1是', ss1)
+      // console.log('ss1的__proto__属性是否和Object.protoType相等', ss1.__proto__ === Object.prototype) //false
+      // console.log('ss1的__proto__属性是否和Array.prototype相等', ss1.__proto__ === Array.prototype) // true
+      // console.log('ss1的__proto__.__proto__属性是否和Object.protoType相等', ss1.__proto__.__proto__ === Object.prototype) // true
+      var Book = function (id, bookname) {
+        this.id = id
+        this.bookname = bookname
+      }
+      // 注意两种不同给原型对象添加属性和方法的方式
+      console.log('Book及Book的原型1是', Book, Book.prototype)
+      Book.prototype.display = function () {
+        console.log('哈哈哈')
+      }
+      console.log('Book及Book的原型2是', Book, Book.prototype)
+      Book.prototype.display = {
+        aa: '3'
+      }
+      console.log('Book及Book的原型3是', Book, Book.prototype)
+      Book.prototype = {
+        play: function () {
+          console.log('嘻嘻')
+        }
+      }
+      console.log('Book及Book的原型4是', Book, Book.prototype)
+    },
+    Person () {
+      this.name = 'john'
+    },
     testSome () {
       let ages = [3, 10, 18, 20]
       document.getElementById('some').innerHTML = ages.some((item) => {
