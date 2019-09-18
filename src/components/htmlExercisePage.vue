@@ -35,6 +35,9 @@
 <option label="Google" value="http://www.google.com" />
 <option label="Microsoft" value="http://www.microsoft.com" />
     </datalist>
+    <br/>
+    1、svg画图
+    <img src="./componentExercise/rect1.svg" alt=""/>
     </div>
 </template>
 <script>
