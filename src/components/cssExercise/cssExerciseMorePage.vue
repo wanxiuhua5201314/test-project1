@@ -34,6 +34,12 @@
        <div class="test-bcg"></div>
     </div>
      </div>
+     4、学习Canvas:<button @click="testCanvas">测试canvas</button>
+     <canvas id="myCanvas" width="400" height="300" style="border: 1px solid #000000;">
+     </canvas>
+     <canvas>
+      <img src="./page-a-window-bg.png" alt="测试图片">
+     </canvas>
  </div>
 </template>
 <script>
@@ -41,6 +47,25 @@ export default {
   data () {
     return {
       inputValue: ''
+    }
+  },
+  methods: {
+    testCanvas () {
+      let c = document.getElementById('myCanvas')
+      if (c.getContext) {
+        let cxt = c.getContext('2d')
+        // cxt.fillStyle = '#FF0000'
+        // cxt.strokeStyle = '#FFFF00'
+        // cxt.lineWidth = '10'
+        // cxt.fillRect(50, 50, 150, 100)
+        var img = new Image()
+        img.src = './page-a-window-bg.png'
+        img.onload = function () {
+          cxt.drawImage(img, 0, 0)
+        }
+      } else {
+        this.$alert('该浏览器不支持canvas')
+      }
     }
   }
 }

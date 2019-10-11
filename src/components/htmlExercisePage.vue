@@ -1,26 +1,28 @@
 <template>
     <div class="html-exercise">
        <router-link to="/">返回主页</router-link>
-    <el-container class='top-container'>
+       <br/>
+    <!-- <el-container class='top-container'>
       <el-header  class="el-header"></el-header>
        <el-main  class="el-main">
          <el-input style="width:50%;margin-right:20px" placeholder="请输入内容"></el-input>
        <el-button style="margin-left:-5px" type="danger">搜索</el-button>
        </el-main>
-    </el-container>
-      <button @click="playPause()">播放/暂停</button>
+    </el-container> -->
+      <!-- <button @click="playPause()">播放/暂停</button>
       <button @click="makeBig()">大</button>
       <button @click="makeNormal()">中</button>
-      <button @click="makeSmall()">小</button>
-      <video id="video1" src="http://video.699pic.com/videos/04/54/34/a_NdVdi6RRDJXw1547045435_10s.mp4" ></video>
-      <button @click="setCanvas">画画布</button>
-      <canvas id="myCanvas" width="200" height="100"></canvas>
+      <button @click="makeSmall()">小</button> -->
+      <!-- <video id="video1" src="http://video.699pic.com/videos/04/54/34/a_NdVdi6RRDJXw1547045435_10s.mp4" ></video> -->
+      <!-- <button @click="setCanvas">画画布</button> -->
+      <!-- <canvas id="myCanvas" width="200" height="100"></canvas>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
            <polygon points="100,10 40,180 190,60 10,60 160,180"
                   style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
-     </svg>
-     <p id="demo"></p>
-     <button @click="getPosition">获取定位</button>
+     </svg> -->
+     <!-- <p id="demo"></p> -->
+     <!-- <button @click="getPosition">获取定位</button> -->
+     1、input type属性的值：<br/>
      输入框type为email时： <input type="email"/>
      输入框type为url时：<input type="url"/>
      输入框type为number时：<input type="number">
@@ -36,8 +38,14 @@
 <option label="Microsoft" value="http://www.microsoft.com" />
     </datalist>
     <br/>
-    1、svg画图
-    <img src="./componentExercise/rect1.svg" alt=""/>
+    <!-- 1、svg画图
+    <img src="./componentExercise/rect1.svg" alt=""/> -->
+    2、html基础练习
+     <p contenteditable="true"> 这是一段可以编辑的段落</p>
+     <p  id="drag1" draggable="true" ondragstart="drag(event)" style="width:50%;" >
+        这一段内容可以移动。请把该段落拖入到下面的矩形
+     </p>
+     <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
 </template>
 <script>
@@ -47,6 +55,19 @@ export default {
     }
   },
   methods: {
+    // 拖动
+    drag (ev) {
+      ev.dataTransfer.setData('Text', ev.target.id)
+    },
+    // 放下
+    drop (ev) {
+      var data = ev.dataTransfer.getData('Text')
+      ev.target.appendChild(document.getElementById(data))
+      ev.preventDefault()
+    },
+    allowDrop (ev) {
+      ev.preventDefault()
+    },
     // 获取定位
     getPosition () {
       let x = document.getElementById('demo')
@@ -79,7 +100,7 @@ export default {
 </script>
 <style lang="scss">
   .html-exercise{
-    margin:0;
+   padding:10px;
     height: 100%;
     .top-container{
      height: 20%;
@@ -93,4 +114,5 @@ export default {
       text-align: center
     }
   }
+  #div1 {width:50%;padding:10px;border:1px solid #aaaaaa;}
 </style>
