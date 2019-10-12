@@ -21,11 +21,11 @@
                   style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
      </svg> -->
      <!-- <p id="demo"></p> -->
-     <!-- <button @click="getPosition">获取定位</button> -->
+     <!-- <button @click="getPosition">获取定位</button> -->  ^[1-9]\d*$
      1、input type属性的值：<br/>
      输入框type为email时： <input type="email"/>
      输入框type为url时：<input type="url"/>
-     输入框type为number时：<input type="number">
+     输入框type为number时：<input min="1" max="9" pattern="[1-9]" type="number">
      输入框type为range时：<input type="range">
      输入框type为Date pickers时：<input type="date">
      输入框type为search时：<input type="search">
@@ -46,28 +46,30 @@
         这一段内容可以移动。请把该段落拖入到下面的矩形
      </p>
      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <br/>
+      <el-button onclick="alert('哈哈哈')">测试</el-button>
     </div>
 </template>
 <script>
+// 拖动
+function drag (ev) {
+  ev.dataTransfer.setData('Text', ev.target.id)
+};
+// 放下
+function drop (ev) {
+  var data = ev.dataTransfer.getData('Text')
+  ev.target.appendChild(document.getElementById(data))
+  ev.preventDefault()
+};
+function allowDrop (ev) {
+  ev.preventDefault()
+}
 export default {
   data () {
     return {
     }
   },
   methods: {
-    // 拖动
-    drag (ev) {
-      ev.dataTransfer.setData('Text', ev.target.id)
-    },
-    // 放下
-    drop (ev) {
-      var data = ev.dataTransfer.getData('Text')
-      ev.target.appendChild(document.getElementById(data))
-      ev.preventDefault()
-    },
-    allowDrop (ev) {
-      ev.preventDefault()
-    },
     // 获取定位
     getPosition () {
       let x = document.getElementById('demo')

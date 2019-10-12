@@ -63,7 +63,9 @@
      <br/>方式一：给原型对象添加成员&nbsp;&nbsp;&nbsp;语法：构照函数.prototype.方法名=function(){}。
      <br/>方式二：替换原型对象（不是覆盖，而是替换，把原先的同名的直接替换成现在的）&nbsp;&nbsp;&nbsp;语法：构照函数.prototype.方法名={}。
      <br/>方式二不常用，因为这样会修改了原型本身。
-
+     <br/>
+     13、排序
+     <button @click="testSort">测试排序</button>{{sortArr1}}<br/>
     <button @click="verifyYuanXing">验证原型和原型链</button>
     </div>
     <!-- 测试merge -->
@@ -96,13 +98,23 @@ export default {
       path: 'ws://192.168.0.200:8005/qrCodePage/ID=1/refreshTime=5',
       socket: '',
       testInterfaceData: '',
-      testData: ''
+      testData: '',
+      sortArr1: [3, 1, 4, 2]
     }
   },
   mounted () {
     // this.init()
   },
   methods: {
+    // 测试排序
+    testSort () {
+      this.sortArr1.sort(this.sortBy)
+    },
+    sortBy (a, b) {
+      let value1 = a - b
+      console.log('a,b,a-b的值分别是', a, b, a - b)
+      return value1
+    },
     // 验证原型和原型链
     verifyYuanXing () {
       function A (a) {
