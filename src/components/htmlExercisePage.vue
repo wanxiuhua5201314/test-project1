@@ -42,34 +42,34 @@
     <img src="./componentExercise/rect1.svg" alt=""/> -->
     2、html基础练习
      <p contenteditable="true"> 这是一段可以编辑的段落</p>
-     <p  id="drag1" draggable="true" ondragstart="drag(event)" style="width:50%;" >
+     <p  id="drag1" draggable="true" @dragstart="drag($event)" style="width:50%;" >
         这一段内容可以移动。请把该段落拖入到下面的矩形
      </p>
-     <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+     <div id="div1" @drop="drop($event)" @dragover="allowDrop($event)"></div>
       <br/>
-      <el-button onclick="alert('哈哈哈')">测试</el-button>
+      <button @click="alert('哈哈哈')">测试</button>
     </div>
 </template>
 <script>
-// 拖动
-function drag (ev) {
-  ev.dataTransfer.setData('Text', ev.target.id)
-};
-// 放下
-function drop (ev) {
-  var data = ev.dataTransfer.getData('Text')
-  ev.target.appendChild(document.getElementById(data))
-  ev.preventDefault()
-};
-function allowDrop (ev) {
-  ev.preventDefault()
-}
 export default {
   data () {
     return {
     }
   },
   methods: {
+    // 拖动
+    drag (ev) {
+      ev.dataTransfer.setData('Text', ev.target.id)
+    },
+    // 放下
+    drop (ev) {
+      var data = ev.dataTransfer.getData('Text')
+      ev.target.appendChild(document.getElementById(data))
+      ev.preventDefault()
+    },
+    allowDrop (ev) {
+      ev.preventDefault()
+    },
     // 获取定位
     getPosition () {
       let x = document.getElementById('demo')
