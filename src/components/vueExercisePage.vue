@@ -1,5 +1,6 @@
 <template>
   <div id="vue-exercise">
+ <div id="particlesId"></div>
    <span style="color:red"> 验证vuex传值: </span>
    <div style="margin-left:10px;margin-top:10px">
      <vue-conponent-one ref="vueConponentOne">
