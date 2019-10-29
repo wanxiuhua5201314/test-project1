@@ -29,7 +29,8 @@
           <el-button type="primary" size="small" @click="verifyAwait">验证await</el-button>
         <br/><br/>
         <span style="color:red;font-size:18px">5、iterator和for...of循环:</span>‘
-        ES6之后，就有了四种数据集合：Array、object、map、set。。
+        ES6之后，就有了四种数据集合：Array、object、map、set。。<br/>
+        6、let 和 var <el-button @click="verifyLetVar">验证var和let</el-button>
     </div>
   </div>
 </template>
@@ -52,6 +53,19 @@ export default {
     }
   },
   methods: {
+    // 验证let 和var
+    verifyLetVar () {
+      // {
+      //   var i = 9
+      // }
+      // console.log('i是', i)
+      // {
+      //   let j = 10
+      //   {
+      //     console.log('内层的J是', j)
+      //   }
+      // }
+    },
     hide () {
       this.$store.commit('hide')
     },

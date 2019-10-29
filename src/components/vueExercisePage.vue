@@ -19,7 +19,15 @@
       按键修饰符: <input @keyup.enter="enterMethod()">
       单个复选框：<input type="checkbox" id="checkbox1" v-model="checked"> <label> {{checked}}</label>
       <br/>
-      .lazy修饰符:  <input v-model.lazy="msg">
+      .lazy修饰符:  <input v-model.lazy="msg"><br/>
+      2、vue中的过渡<br/>
+      <div @click="showFn" class="green">
+       <transition name="red"><div v-show="show" class="red"></div></transition>
+      </div>
+       3、vue中的指令
+      <input v-forcus>
+      4、测试箭头函数-箭头函数下的this
+      <el-button @click="testThis">测试this</el-button>
   </div>
 </template>
 <script>
@@ -32,14 +40,37 @@ export default {
       checked: false,
       enterMethod () {
         this.$alert('按了enter键')
+      },
+      show: false,
+      particle: [],
+      particle1: []
+    }
+  },
+  directives: {
+    forcus: {
+      // 指令的定义
+      inserted: function (el) {
+        // 聚焦元素
+        el.focus()
       }
     }
+  },
+  methods: {
+    testThis () {
+      this.$axios.get('/static/particles.json').then(res => {
+        this.particle = res.data
+        console.log('哈哈this:', this)
+        let _this = this
+        _this.$axios.get('/static/particles1.json').then(res1 => {
+          _this.particle1 = res1.data
+          console.log('嘻嘻_this:', _this, this)
+        })
+      })
+    },
+    showFn () {
+      this.show = true
+    }
   }
-  // methods: {
-  //   enterMethod () {
-  //     this.$alert('按了enter键,哈哈哈')
-  //   }
-  // }
 }
 </script>
 <style lang="scss">
@@ -48,4 +79,33 @@ export default {
     width:100%;
     padding:20px
   }
+  .green{
+    width:100px;
+    height:100px;
+    border:1px solid
+  }
+ .red{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /*下面的样式可以不写，这里为了方便理解*/
+    opacity: 1;
+    margin-left:0;
+}
+.red-enter{
+    opacity: 0;
+    margin-left:100%;
+}
+.red-enter-active{
+    transition: all 1s;
+}
+// .red-leave{
+//     /*对于简单动画来说，[name]-leave也可以不写，多数情况下，此处的样式和元素正常显示是的样式是相同的*/
+//     opacity: 1;
+//     margin-left:0;
+// }
+// .red-leave-active{
+//     opacity: 0;
+//     margin-left:100%;
+// }
 </style>
