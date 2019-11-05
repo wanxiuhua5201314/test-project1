@@ -27,7 +27,9 @@
        3、vue中的指令
       <input v-forcus>
       4、测试箭头函数-箭头函数下的this
-      <el-button @click="testThis">测试this</el-button>
+      <el-button @click="testThis">测试this</el-button><br/>
+      5、vue中的key(重要!!!!):(1)用 index 作为 key 值是有隐患的，除非你能保证 index 始终能够能够作为一个唯一的标识:
+          (2) 有相同父元素的子元素必须有独特的 key。重复的 key 会造成渲染错误。
   </div>
 </template>
 <script>
