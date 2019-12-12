@@ -1,5 +1,4 @@
 <template>
-
     <div id="jsExerciseMorePage">
        <span style="color:red"> 提示：页面进来后直接f12看控制台，有一些代码返回的结果</span>
        <br/>
@@ -67,8 +66,15 @@
      13、排序
      <button @click="testSort">测试排序</button>{{sortArr1}}<br/>
     <button @click="verifyYuanXing">验证原型和原型链</button>
+    <br/>
+    14.input:控制input里的值只能是正整数
+    <el-input v-model="inputValue" ></el-input><el-button @click="verifyInput">验证input</el-button>
+    <br/>
+    15.测试字符串的length属性,以及空字符串是不是会报错？<el-button  type="primary"  @click="testLength"> 测试length</el-button>
+    <br/>
+    16.<el-button  type="primary"  @click="testLength"> 测试length</el-button>
+    <br/>
     </div>
-    <!-- 测试merge -->
 </template>
 <script>
 var person1 = {
@@ -94,6 +100,7 @@ console.log('调用对象的toLocaleString方法：', people.toLocaleString())
 export default {
   data () {
     return {
+      inputValue: '',
       arr: [],
       path: 'ws://192.168.0.200:8005/qrCodePage/ID=1/refreshTime=5',
       socket: '',
@@ -106,6 +113,17 @@ export default {
     // this.init()
   },
   methods: {
+    // 测试length
+    testLength () {
+      let ss = 'abcde'
+      console.log('ss的长度是', ss.length)
+      let ss1 = ''
+      console.log('空字符串的长度是', ss1.length)
+    },
+    // 验证input
+    verifyInput () {
+
+    },
     // 测试排序
     testSort () {
       this.sortArr1.sort(this.sortBy)

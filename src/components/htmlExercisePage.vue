@@ -48,10 +48,21 @@
      <div id="div1" @drop="drop($event)" @dragover="allowDrop($event)"></div>
       <br/>
       <button @click="alert('哈哈哈')">测试</button>
+        3、放大镜组件
+          <vue-photo-zoom-pro
+        :width="width"
+        :url="url"
+        :type="type"
+        :scale="scale"
+        :out-show="showType"
+      >
+      </vue-photo-zoom-pro>
     </div>
 </template>
 <script>
+// import vuePhotoZoomPro from './componentExercise/vue-photo-zoom-pro'
 export default {
+  // components: [vuePhotoZoomPro],
   data () {
     return {
     }
