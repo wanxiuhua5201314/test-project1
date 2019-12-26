@@ -4,8 +4,11 @@
    <!-- 2、 <el-button  type="primary" @click="betterFor">优化版for循环</el-button> -->
    2、<el-button type="primary"  @click="testForIn">验证for in</el-button> 结论：优点：既可以获取值，有可以获取值所在索引; 缺点：某些情况下会出现随机顺序的遍历;不推荐用在数组上，如果有原型属性，原型属性也会被访问<br/>
    3、<el-button type="primary"  @click="testForOf">验证for of</el-button> 结论：只能获取值;支持数组、类似数组的对象、字符串的遍历。 <br/>
-   4、for Each:优点：优雅，缺点：不可以break、continue、return;只支持IE9以上。
-   5、Generator函数 <el-button type="primary" @click="testGenerator">测试generator函数</el-button>
+   4、for Each:优点：优雅，缺点：不可以break、continue、return;只支持IE9以上。<br/>
+   5、Generator函数 <el-button type="primary" @click="testGenerator">测试generator函数</el-button> <br/>
+   6、iterator函数，<el-button type="primary" @click="testIterator">测试iterator</el-button> <br/>
+   7、看各种数据类型的原型 <el-button type="primary" @click="showProto">查看数据类型原型</el-button> <br/>
+   8.<el-button type="primary" @click="showHttp">查看http</el-button>
   </div>
 </template>
 <script>
@@ -55,7 +58,41 @@ export default {
       let arr1 = ['a', 'b', 'c']
       for (let [i, item] of arr1) {
         console.log(i, item)
-      }
+      };
+      // 对象用for...of会报错。
+      // let obj1 = {name: 'www', age: 28, sex: '男'}
+      // for (let i of obj1) {
+      //   console.log('值分别是', i)
+      // }
+    },
+    // 查看http相关东西
+    showHttp () {
+      let http = require('http')
+      console.log('http是', http)
+    },
+    // 查看各种数据类型的原型。
+    showProto () {
+      var arr1 = [1, 2, 3, 4]
+      var arr2 = ''
+      arr2 = arr1.find(function (value, index, arr) {
+        return value > 2
+      })
+      console.log('arr1是', arr1)
+      console.log('arr2是', arr2)
+      var obj = {name: 'wxh'}
+      console.log('obj是', obj)
+      var mapO = new Map()
+      mapO = {age: 26}
+      console.log('mapO是', mapO)
+    },
+    // 测试iterator
+    testIterator () {
+      let arr = [1, 2, 3, 4]
+      let iterator1 = arr[Symbol.iterator]()
+      console.log(iterator1.next())
+      console.log(iterator1.next())
+      console.log(iterator1.next())
+      console.log(iterator1.next())
     },
     // 测试generator函数
     testGenerator () {
