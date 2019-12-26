@@ -84,6 +84,7 @@ export default {
       var mapO = new Map()
       mapO = {age: 26}
       console.log('mapO是', mapO)
+      console.log('合并分支测试', 'master分支')
     },
     // 测试iterator
     testIterator () {
