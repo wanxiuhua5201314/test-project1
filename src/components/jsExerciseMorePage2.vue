@@ -72,6 +72,7 @@ export default {
     },
     // 查看各种数据类型的原型。
     showProto () {
+      console.log('第二次测试合并', 'dev分支')
       var arr1 = [1, 2, 3, 4]
       var arr2 = ''
       arr2 = arr1.find(function (value, index, arr) {
