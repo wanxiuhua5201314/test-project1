@@ -34,7 +34,7 @@ export default {
       for (let i = 0, j = arr.length; i < j; i++) {
         arr1.push(arr[i])
       }
-      console.timeEnd('优化版for')
+      console.timeEnd('优化版for', '........')
     },
     // 验证for in
     testForIn () {
