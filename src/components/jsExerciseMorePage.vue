@@ -115,6 +115,7 @@ export default {
   methods: {
     // 测试length
     testLength () {
+      console.log('第二次测试合并', 'test-branch分支')
       let ss = 'abcde'
       console.log('ss的长度是', ss.length)
       let ss1 = ''
