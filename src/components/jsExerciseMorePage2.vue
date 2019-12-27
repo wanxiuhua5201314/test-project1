@@ -8,15 +8,38 @@
    5、Generator函数 <el-button type="primary" @click="testGenerator">测试generator函数</el-button> <br/>
    6、iterator函数，<el-button type="primary" @click="testIterator">测试iterator</el-button> <br/>
    7、看各种数据类型的原型 <el-button type="primary" @click="showProto">查看数据类型原型</el-button> <br/>
-   8.<el-button type="primary" @click="showHttp">查看http</el-button>
-   9.异步遍历器：<el-button type="primary" @click="testAsyncIterator">测试异步遍历器</el-button>
+   8.<el-button type="primary" @click="showHttp">查看http</el-button><br/>
+   9.异步遍历器：<el-button type="primary" @click="testAsyncIterator">测试异步遍历器</el-button><br/>
+   10.遍历器的应用：(1)解构赋值。(2)扩展运算符。<el-button type="primary" @click="iteratorApply">遍历器应用</el-button><br/>
+   11.filter方法。<el-button type="parimary" @click="testFilter">测试filter</el-button>
+   12.避免v-if 和 v-for 的方法:使用computed属性
+   <div v-for="item in haveAuthData "  :key="item.name">
+     {{item.name}}
+   </div>
   </div>
 </template>
 <script>
 export default {
   data () {
     return {
-
+      authData: [
+        {
+          name: 'ww',
+          auth: true
+        }, {
+          name: 'ss',
+          auth: false
+        }, {
+          name: 'tt',
+          auth: true
+        }]
+    }
+  },
+  computed: {
+    haveAuthData: function () {
+      return this.authData.filter(function (user) {
+        return user.auth === true
+      })
     }
   },
   methods: {
@@ -37,6 +60,30 @@ export default {
       }
       console.timeEnd('优化版for', '........')
     },
+    // 测试filter
+    testFilter () {
+      let tt = this.authData.filter(function (user) {
+        return user.auth === true
+      })
+      console.log('tt是', tt)
+    },
+    // 遍历器的应用
+    iteratorApply () {
+      // 解构
+      let sss = new Set().add('a').add('b').add('c')
+      let [x, y] = sss
+      console.log(x, y)
+      let [first, ...resst] = sss
+      console.log(first, resst)
+      let obj = {a: 1, b: 2, c: 4, d: 6}
+      let {a, b, c, e} = obj
+      console.log(a, b, c, e)
+      // 扩展运算符
+      let arr1 = [1, 2, 3]
+      let arr2 = ['a', [...arr1], 'b']
+      let arr3 = ['a', ...arr1, 'b']
+      console.log('arr2是:', arr2, 'arr3是：', arr3)
+    },
     // 验证for in
     testForIn () {
       // // let arr = ['a', 'b', 'c']
@@ -53,6 +100,18 @@ export default {
       //   //   console.log(i, array[i])
       //   // }
       // }
+      let obj = {
+        age: '12',
+        sex: '男',
+        job: 'developer'
+      }
+      for (let i in obj) {
+        console.log(i, obj[i])
+      };
+      let arr1 = ['a', 'b', 'c', 'd']
+      for (let j in arr1) {
+        console.log(j, arr1[j])
+      }
     },
     // 验证 for of
     testForOf () {
@@ -84,9 +143,15 @@ export default {
       var obj = {name: 'wxh'}
       console.log('obj是', obj)
       var mapO = new Map()
-      mapO = {age: 26}
+      mapO.set('sex', 'girl')
       console.log('mapO是', mapO)
-      console.log('合并分支测试', 'dev分支')
+      var str1 = new String('abcde')
+      var str2 = '12345'
+      console.log('str1是', str1, str2)
+      let ss = new Set()
+      ss.add(1)
+      ss.add(1)
+      console.log('ss是', ss)
     },
     // 测试iterator
     testIterator () {
