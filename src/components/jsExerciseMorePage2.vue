@@ -9,6 +9,7 @@
    6、iterator函数，<el-button type="primary" @click="testIterator">测试iterator</el-button> <br/>
    7、看各种数据类型的原型 <el-button type="primary" @click="showProto">查看数据类型原型</el-button> <br/>
    8.<el-button type="primary" @click="showHttp">查看http</el-button>
+   9.异步遍历器：<el-button type="primary" @click="testAsyncIterator">测试异步遍历器</el-button>
   </div>
 </template>
 <script>
@@ -84,8 +85,6 @@ export default {
       var mapO = new Map()
       mapO = {age: 26}
       console.log('mapO是', mapO)
-      console.log('合并分支测试', 'dev分支')
-      console.log('测试souceTree 贮藏功能')
     },
     // 测试iterator
     testIterator () {
@@ -95,6 +94,29 @@ export default {
       console.log(iterator1.next())
       console.log(iterator1.next())
       console.log(iterator1.next())
+    },
+    // 测试异步遍历器
+    testAsyncIterator () {
+      let it = this.idMarker()
+      console.log('it是', it)
+      console.log('是否是promisez对象', it.next().value)
+      it.next().value.then(o => {
+        console.log(o, o.valM)
+      })
+    },
+    idMarker () {
+      let index = 0
+      return {
+        next: function () {
+          return {
+            value: new Promise(function (resolve, reject) {
+              setTimeout(() => {
+                resolve({valM: index++, done: false})
+              }, 1000)
+            })
+          }
+        }
+      }
     },
     // 测试generator函数
     testGenerator () {
