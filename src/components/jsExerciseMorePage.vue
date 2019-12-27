@@ -252,6 +252,7 @@ export default {
     },
     close () {
       console.log('socket已经关闭')
+      console.log('测试souceTree 贮藏功能')
     },
     verifyPush () {
       let alength = this.arr.push('hah', 'heiehi')
