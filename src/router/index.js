@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import mainPage from '@/components/mainPage'
 import cssExercisePage from '@/components/cssExercisePage.vue'
 import cssExerciseMorePage from '@/components/cssExercise/cssExerciseMorePage.vue'
+import cssExerciseMorePage1 from '@/components/cssExercise/cssExerciseMorePage1.vue'
 import jsExercisePage from '@/components/jsExercisePage.vue'
 import htmlExercisePage from '@/components/htmlExercisePage.vue'
 import componentExercisePage from '@/components/componentExercisePage.vue'
@@ -28,6 +29,11 @@ export default new Router({
       path: '/cssExerciseMorePage',
       name: 'cssExerciseMorePage',
       component: cssExerciseMorePage
+    },
+    {
+      path: '/cssExerciseMorePage1',
+      name: 'cssExerciseMorePage1',
+      component: cssExerciseMorePage1
     },
     {
       path: '/jsExercisePage',

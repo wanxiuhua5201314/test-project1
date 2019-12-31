@@ -11,17 +11,39 @@
    8.<el-button type="primary" @click="showHttp">查看http</el-button><br/>
    9.异步遍历器：<el-button type="primary" @click="testAsyncIterator">测试异步遍历器</el-button><br/>
    10.遍历器的应用：(1)解构赋值。(2)扩展运算符。<el-button type="primary" @click="iteratorApply">遍历器应用</el-button><br/>
-   11.filter方法。<el-button type="parimary" @click="testFilter">测试filter</el-button>
+   11.filter方法。<el-button type="primary" @click="testFilter">测试filter</el-button>
    12.避免v-if 和 v-for 的方法:使用computed属性
    <div v-for="item in haveAuthData "  :key="item.name">
      {{item.name}}
-   </div>
+   </div><br/>
+   13.<el-button type="primary" @click="testVue">测试vue</el-button>
+   14.弹框拖拽<br/>
+   <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button><br/>
+   <el-dialog
+   v-dialogDrag
+  :close-on-click-modal="clickBoolean"
+  title="提示"
+  :visible.sync="dialogVisible"
+  width="30%"
+  :before-close="handleClose">
+  <span>这是一段信息</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+</el-dialog>
+   15.弹框拖拽
+<div v-divDrag class="div-drag" ></div>
   </div>
 </template>
 <script>
+import Vue from 'vue'
 export default {
   data () {
     return {
+      clickBoolean: false,
+      dialogVisible: false,
+      strTemplate: '哈哈哈哈',
       authData: [
         {
           name: 'ww',
@@ -43,6 +65,28 @@ export default {
     }
   },
   methods: {
+    mouseDownHandleelse (event) {
+      this.moveDataelse.x = event.pageX - this.$refs.kongtiao.offsetLeft
+      this.moveDataelse.y = event.pageY - this.$refs.kongtiao.offsetTop
+      event.currentTarget.style.cursor = 'move'
+      window.onmousemove = this.mouseMoveHandleelse
+    },
+    mouseMoveHandleelse (event) {
+      let moveLeft = event.pageX - this.moveDataelse.x + 'px'
+      let moveTop = event.pageY - this.moveDataelse.y + 'px'
+      this.$refs.kongtiao.style.left = moveLeft
+      this.$refs.kongtiao.style.top = moveTop
+    },
+    mouseUpHandleelse (event) {
+      window.onmousemove = null
+      event.currentTarget.style.cursor = 'move'
+      console.log('鼠标松开了')
+    },
+    // 测试vue
+    testVue () {
+      let ss = new Vue()
+      console.log(ss)
+    },
     // 验证简版for
     simpleFor () {
       let arr = new Array(1000000)
@@ -204,5 +248,11 @@ export default {
     width:100%;
     padding: 20px;
   box-sizing: border-box;
+}
+.div-drag{
+   height: 200px;
+    width: 400px;
+    border:1px solid;
+    cursor: pointer;
 }
 </style>
