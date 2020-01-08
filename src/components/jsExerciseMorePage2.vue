@@ -34,6 +34,8 @@
 </el-dialog>
    15.弹框拖拽
 <div v-divDrag class="div-drag" ></div>
+  16.push赋值问题:push方法返回的是数组的长度。
+  <el-button type="primary" @click="testPush">push赋值测试</el-button>
   </div>
 </template>
 <script>
@@ -65,6 +67,13 @@ export default {
     }
   },
   methods: {
+    //
+    testPush () {
+      let ss = []
+      let ss1 = ss.push('kk', 'yy', 'tt')
+      let ss2 = ss
+      console.log('ss1,ss2是', ss1, ss2)
+    },
     mouseDownHandleelse (event) {
       this.moveDataelse.x = event.pageX - this.$refs.kongtiao.offsetLeft
       this.moveDataelse.y = event.pageY - this.$refs.kongtiao.offsetTop
