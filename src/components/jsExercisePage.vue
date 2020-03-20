@@ -113,15 +113,31 @@
         </div>
          <!-- 测试merge ,master分支添加
     嘿嘿-->
+       测试input:type为password时，自动填充值的问题。  <el-button type="primary" @click="testIsShow">显示input</el-button>
+       <el-button type="primary" @click="testIsShow2">显示第二个input</el-button>
+       <div style="display:flex">
+         <div style="display:flex">
+            <el-input type="text" v-model="cs" ></el-input>
+             <el-input type="text" v-model="cs2"  v-if="csInputShow2"></el-input>
+          </div>
+          <input v-show="csInputShow" v-model="name" />
+        <el-input v-show="csInputShow" type="password" v-model='pw'> </el-input>
+      </div>
+      </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import moment from 'moment'
 export default {
   data () {
     return {
+      csInputShow: false,
+      csInputShow2: false,
+      cs: '',
+      cs2: '',
+      name: '',
+      pw: '',
       msg: 'A',
       trueT: false,
       msg1: '',
@@ -156,6 +172,12 @@ export default {
     console.log('历史记录是', historyInformation)
   },
   methods: {
+    testIsShow () {
+      this.csInputShow = !this.csInputShow
+    },
+    testIsShow2 () {
+      this.csInputShow2 = !this.csInputShow2
+    },
     // 测试let and var
     testLetAndVar () {
       var a = []

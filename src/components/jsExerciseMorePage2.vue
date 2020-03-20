@@ -35,7 +35,9 @@
    15.弹框拖拽
 <div v-divDrag class="div-drag" ></div>
   16.push赋值问题:push方法返回的是数组的长度。
-  <el-button type="primary" @click="testPush">push赋值测试</el-button>
+  <el-button type="primary" @click="testPush">push赋值测试</el-button><br/>
+  17。验证input <br/>
+     <el-input type="text" v-model="cs"></el-input>
   </div>
 </template>
 <script>
@@ -43,6 +45,9 @@ import Vue from 'vue'
 export default {
   data () {
     return {
+      cs: '',
+      name: '',
+      pw: '',
       clickBoolean: false,
       dialogVisible: false,
       strTemplate: '哈哈哈哈',
