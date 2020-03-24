@@ -1,5 +1,5 @@
 <template>
-    <div id="jsExerciseMorePage">
+    <div id="jsExerciseMorePage" >
        <span style="color:red"> 提示：页面进来后直接f12看控制台，有一些代码返回的结果</span>
        <br/>
        <el-button type="primary" size="small" @click="verifyPush">验证数组push、shift、unshift</el-button>
@@ -74,6 +74,15 @@
     <br/>
     16.<el-button  type="primary"  @click="testLength"> 测试length</el-button>
     <br/>
+    17.防抖与节流：防抖：触发高频事件后n秒内只有执行一次，如果n秒内高频事件再次被触发，则重新计算时间。
+                 节流：持续触发scroll事件时，并不立即执行函数，而是每隔（）毫秒才会执行一次。
+    <span style="color:red">(!!!!还未验证，待验证)</span>
+    <div style="border:1px solid; width:80px;height:80px;overflow:auto" @scroll="doScroll">
+      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
+      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
+      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
+      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
+    </div>
     </div>
 </template>
 <script>
@@ -110,9 +119,23 @@ export default {
     }
   },
   mounted () {
-    // this.init()
   },
   methods: {
+    doScroll () {
+    },
+    // 防抖代码
+    debounce (fn, delay) {
+      let timeout = null
+      return function (e) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          fn.apply(this, arguments)
+        }, delay)
+      }
+    },
+    handle () {
+      console.log('防抖:', Math.random())
+    },
     // 测试length
     testLength () {
       console.log('第二次测试合并', 'dev分支')
