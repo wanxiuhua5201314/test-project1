@@ -86,6 +86,7 @@
     </div>
 </template>
 <script>
+import {debounce, throttle} from '@/utils/common.js'
 var person1 = {
   toLocaleString: function () {
     return 'nick'
@@ -122,16 +123,9 @@ export default {
   },
   methods: {
     doScroll () {
-    },
-    // 防抖代码
-    debounce (fn, delay) {
-      let timeout = null
-      return function (e) {
-        clearTimeout(timeout)
-        timeout = setTimeout(() => {
-          fn.apply(this, arguments)
-        }, delay)
-      }
+      debounce(this.handle, 1000)() // 调用防抖方法
+      // throttle(this.handle, 3000)() // 调用节流方法
+      // this.handle()
     },
     handle () {
       console.log('防抖:', Math.random())
