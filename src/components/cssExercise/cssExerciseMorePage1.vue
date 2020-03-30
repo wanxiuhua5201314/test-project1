@@ -7,6 +7,11 @@
       <div class="dot">  </div>
       <div class="dot">  </div>
     </div>
+  在重合元素外层包裹一层容器，并触发该容器生成一个BFC。
+    <div class="aside"> </div>
+    <div class="text">
+       <div class="main"></div>
+    </div>
   </div>
 </template>
 <script>
@@ -78,6 +83,21 @@ export default {
     // div:nth-child(5){
     //  background:mediumpurple
     // }
+  }
+  .aside{
+    margin-bottom:20px;
+    width:50px;
+    height:50px;
+    background: lightblue
+  }
+  .main{
+    margin-top:20px;
+    height:60px;
+    width:60px;
+    background: #4682b4
+  }
+  .text{
+    overflow: hidden;
   }
 }
 </style>
