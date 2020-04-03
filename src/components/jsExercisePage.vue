@@ -21,6 +21,10 @@
          <li>
         <a href="#functionExtend">函数扩展</a>
         </li>
+          <li>
+        <a href="#divDrag">div的拖拽</a>
+        </li>
+
          <li>
         <a href="#arrayExtend">数组扩展</a>
         </li>
@@ -122,7 +126,12 @@
           </div>
           <input v-show="csInputShow" v-model="name" />
         <el-input v-show="csInputShow" type="password" v-model='pw'> </el-input>
-      </div>
+        </div>
+        <br/>
+        8.拖拽功能，同时验证offsetLeft,clientX等属性<span style="color:red">(还存在问题，需进一步验证)</span>
+        <div  draggable="true" ref="testDragDivRef" id="divDrag"  @dragstart='dragStart($event)'  @dragover="dragover($event)" style="width:100px;height:100px;border:1px solid" >
+
+        </div>
       </div>
       </div>
     </div>
@@ -172,6 +181,18 @@ export default {
     console.log('历史记录是', historyInformation)
   },
   methods: {
+    dragStart (e) {
+      console.log('start:' + e.clientX)
+      console.log('startX:' + this.$refs.testDragDivRef.offsetLeft)
+      this.offsetX = e.clientX - this.$refs.testDragDivRef.offsetLeft
+      this.offsetY = e.clientY - this.$refs.testDragDivRef.offsetTop
+    },
+    dragover (e) {
+      var left = e.clientX - this.offsetX
+      var top = e.clientY - this.offsetY
+      this.$refs.testDragDivRef.style.left = left + 'px'
+      this.$refs.testDragDivRef.style.top = top + 'px'
+    },
     testIsShow () {
       this.csInputShow = !this.csInputShow
     },
