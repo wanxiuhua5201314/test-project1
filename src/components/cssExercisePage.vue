@@ -1,6 +1,8 @@
 <template>
   <div class="css-exercise">
     <router-link to='/'>返回主页</router-link>
+    <span>p</span>
+    <div class="pxAndRem">测试px与rem</div>
     <div style="text-align:center;color:red">css5练习</div>
     <div style="display:flex;flex-direction:row; justify-content:start">
       <div style="height:100px;width:100px;background:white;">
@@ -92,6 +94,11 @@ export default {
   margin:0;
   padding:20px;
   height:100%;
+  .pxAndRem{
+    width:4rem;
+    height:30px;
+    border:1px solid
+  }
  .test-animation{
    position:relative;
    height:50px;
