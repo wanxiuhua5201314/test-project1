@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import store from './store/index.js'
 import './directives.js'
+import '../config/rem.js'
 Vue.use(ElementUI)
 Vue.use(axios)
 Vue.prototype.$axios = axios
