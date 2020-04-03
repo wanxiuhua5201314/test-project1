@@ -28,3 +28,6 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+#把px转为rem
+安装px2rem-loader插件，是为了将代码里的px转为rem(F12查看styles时，所有的样式都是以rem为单位的)；添加rem.js文件，这个是根据不同的分辨率设置不同的fontSize,这样，浏览器渲染是，实际的样式大小为 X( rem) * fontSize =Y (px)
