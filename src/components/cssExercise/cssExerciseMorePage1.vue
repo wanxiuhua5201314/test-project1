@@ -12,6 +12,9 @@
     <div class="text">
        <div class="main"></div>
     </div>
+    <br/>
+  1、伪类和伪元素
+  <div class="second-div">测试伪类和伪元素</div>
   </div>
 </template>
 <script>
@@ -28,6 +31,7 @@ export default {
   margin:0;
   padding:20px;
   height:100%;
+  //filter:grayscale(100%);//加滤镜
   .first-div{
     display:flex;
     justify-content: center;
@@ -83,6 +87,29 @@ export default {
     // div:nth-child(5){
     //  background:mediumpurple
     // }
+  }
+  .second-div{
+    background-color:white;
+    width:200px;
+    height:60px;
+    text-align: center;
+    line-height: 60px;
+    border:1px solid;
+    position: relative;
+  }
+  // .second-div:hover{
+  //   background-color:red;
+  // }
+  .second-div:after{
+    content: '';
+    position: absolute;
+    border-top:20px solid transparent;
+    border-right:20px solid transparent;
+    border-bottom:20px solid transparent;
+    border-left:20px solid  #7f7f7f;
+    right:-40px;
+    top:10px
+
   }
   .aside{
     margin-bottom:20px;

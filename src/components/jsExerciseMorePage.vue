@@ -76,17 +76,17 @@
     <br/>
     17.防抖与节流：防抖：触发高频事件后n秒内只有执行一次，如果n秒内高频事件再次被触发，则重新计算时间。
                  节流：持续触发scroll事件时，并不立即执行函数，而是每隔（）毫秒才会执行一次。
-    <span style="color:red">(!!!!还未验证，待验证)</span>
-    <div style="border:1px solid; width:80px;height:80px;overflow:auto" @scroll="doScroll">
-      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
-      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
-      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
-      测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖  测试防抖
+    <span style="color:green">(已验证，注意写法)</span>
+    <div style="border:1px solid; width:300px;height:40px;line-height:40px;text-align:center" @mousemove="doMouseMove">
+       鼠标移动产生的值是：{{testValue}}
     </div>
+    <!-- <button v-debounce="handle">不传参测试</button>
+    <button v-debounce="[$ev => {handle($ev,4)},500]">传参，且获取事件的测试</button>
+    <button v-debounce="[() => {hanle(4)},500]">传参，不获取事件的测试</button> -->
     </div>
 </template>
 <script>
-import {debounce, throttle} from '@/utils/common.js'
+import {debounce} from '@/utils/common.js'
 var person1 = {
   toLocaleString: function () {
     return 'nick'
@@ -110,6 +110,7 @@ console.log('调用对象的toLocaleString方法：', people.toLocaleString())
 export default {
   data () {
     return {
+      testValue: 0,
       inputValue: '',
       arr: [],
       path: 'ws://192.168.0.200:8005/qrCodePage/ID=1/refreshTime=5',
@@ -122,14 +123,20 @@ export default {
   mounted () {
   },
   methods: {
-    doScroll () {
-      debounce(this.handle, 1000)() // 调用防抖方法
-      // throttle(this.handle, 3000)() // 调用节流方法
-      // this.handle()
-    },
     handle () {
-      console.log('防抖:', Math.random())
+      this.testValue = this.testValue + 1
     },
+    doMouseMove:
+    debounce(function () {
+      this.testValue = this.testValue + 1
+    },
+    300), // 正确写法
+    // doMouseMove () {
+    //   debounce(function () {
+    //     this.testValue = this.testValue + 1
+    //   }, 300)
+    // }, // 错误写法
+    // doMouseMove: debounce(this.handle, 300), // 错误写法
     // 测试length
     testLength () {
       console.log('第二次测试合并', 'dev分支')

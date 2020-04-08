@@ -1,4 +1,18 @@
 import Vue from 'vue'
+import {debounce} from '@/utils/common.js'
+// 防抖自定义指令
+Vue.directive('debounce', {
+  bind (el, bingding) {
+    let executeFunction
+    if (bingding.value instanceof Array) {
+      const [func, time = 1000] = bingding.value
+      executeFunction = debounce(func, time)
+    } else {
+      executeFunction = debounce(bingding.value, 1000)
+    }
+    el.addEventListener('mousemove', executeFunction)
+  }
+})
 
 // v-dialogDrag: 弹窗拖拽
 Vue.directive('dialogDrag', {
